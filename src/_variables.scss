@@ -1,0 +1,18 @@
+$blue: #2699FB;
+$light-blue: #BCE0FD;
+$primary-color: $blue;
+$theme-colors: (
+  "primary": $primary-color
+);
+
+$border-radius: 5rem;
+$input-padding-x: 0.75rem;  
+$input-padding-y:  0.75rem;
+$input-color: $primary-color;
+$input-border-color: $light-blue;
+$input-border-width: 2px;
+$input-focus-border-color: $primary-color;
+$input-focus-color: $primary-color;
+$input-focus-width: 2px;
+$input-focus-box-shadow: none;
+$input-placeholder-color: $light-blue;
