@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+import { FormLabel } from 'react-bootstrap';
 
 import './GlobalSettings.scss';
+import FontSettings from '../../components/Settings/Fonts/Fonts';
+import MarginSettings from '../../components/Settings/Margins/Margins';
+import ColorPicker from '../../components/UI/ColorPicker/ColorPicker';
 
 class GlobalSettings extends React.Component{
 
@@ -11,20 +14,20 @@ class GlobalSettings extends React.Component{
       <div className="Component">
         <h4 className="mb-5">Global Settings</h4>
         <Row>
-          <Col>
-            <div style={{display: "flex"}}>
-              <Form.Group controlId="Fonts" style={{maxWidth: "170px", width: "100%", marginRight: "1rem"}}>
-                <Form.Label>Fonts</Form.Label>
-                <Form.Control as="select">
-                  <option className="option">Roboto</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="Size" style={{maxWidth: "100px"}}>
-                <Form.Label>Size</Form.Label>
-                <Form.Control type="number" step="0.1" min="1.2" max="3" placeholder="1.2"/>
-              </Form.Group>
-            </div>
+          <Col className="mb-4" >
+            <FontSettings />
           </Col>  
+        </Row>
+        <Row>
+          <Col className="mb-4" >
+            <MarginSettings />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mb-4" >
+            <FormLabel>Theme</FormLabel>
+            <ColorPicker />
+          </Col>
         </Row>
       </div>
     )
