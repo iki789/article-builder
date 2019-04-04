@@ -26,7 +26,7 @@ class GlobalSettings extends React.Component{
         <Row>
           <Col className="mb-4" >
             <FormLabel>Theme</FormLabel>
-            <ColorPicker />
+            <ColorPicker color="red" showColorPicker={false} />
           </Col>
         </Row>
       </div>
