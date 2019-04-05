@@ -11,6 +11,8 @@ interface IColorInputPicker{
 
 class ColorInputPicker extends React.Component<IColorInputPicker>{
 
+  public wrapperRef: React.RefObject<any>;
+  // public wrapperRef: any;
   public state:IColorInputPicker = {
     color: 'orangered',
     showColorPicker: false
@@ -20,13 +22,21 @@ class ColorInputPicker extends React.Component<IColorInputPicker>{
     super(props);
   }
 
-  public componentWillMount(){
+  public componentDidMount(){
     this.setState({
       ...this.state,
       color: this.props.color,
       showColorPicker: this.props.showColorPicker
     });
+    document.addEventListener('mousedown', this.handleClickOutComponent);
+    this.wrapperRef = React.createRef();
+    console.log(this.wrapperRef)
   }
+
+  public componentWillUnmount(){
+    document.removeEventListener('mousedown', this.handleClickOutComponent);
+  }
+
 
   public handleColorChange = (e:any) => {
     this.setState({
@@ -51,16 +61,28 @@ class ColorInputPicker extends React.Component<IColorInputPicker>{
     />);
 
     return (
-      <div>  
-        <div
-          onClick={this.toggleColorPicker}
-          style={{backgroundColor: this.state.color}} 
-          className="ColorPickerRound"
-        />
-        {this.state.showColorPicker ? Picker : '' }    
+      <div>
+        <div className="ColorPickerComponent" ref={this.wrapperRef}>  
+          <div
+            onClick={this.toggleColorPicker}
+            style={{backgroundColor: this.state.color}} 
+            className="ColorPickerRound"
+          />
+          {this.state.showColorPicker ? Picker : '' }    
+        </div>
       </div>
     )
   }
+
+  private handleClickOutComponent = (e:MouseEvent) => {
+    if(this.wrapperRef.current && !this.wrapperRef.current.contains(e.target)){
+      this.setState({
+        ...this.state,
+        showColorPicker: false
+      })
+    }
+  }
+
 }
 
 export default ColorInputPicker;

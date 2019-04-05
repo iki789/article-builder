@@ -1,5 +1,9 @@
 @import "../../../variables";
 
+.ColorPickerComponent{
+  display: inline-block;
+}
+
 .ColorPickerRound{
   position: relative;
   border-radius: 50%;
