@@ -1,0 +1,57 @@
+@import '~react-quill/dist/quill.snow.css';
+@import '../../../variables';
+
+.ql-snow{
+  .ql-editor{
+    background-color: #fff;
+    min-height: 250px;
+    max-height: 400px;
+    &:focus-within{
+      border: 2px solid $primary-color;
+    }
+  }
+  .ql-picker{
+    height: 36px;
+    width: 120px;
+    &.ql-header{
+      width: 120px;
+    }
+    .ql-picker-options{
+      border-radius: 5px;
+    }
+  }
+  &.ql-toolbar{
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 4px;
+    button{
+      background-color: #fff;
+      border-radius: 5px;
+      margin-right: 4px;
+      height: 28px;
+    }
+    .ql-picker-label{
+      background: #fff;
+      height: 36px;
+      border: 2px solid $light-blue;
+      border-radius: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0; 
+    }
+  }
+}
+
+.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker){
+  &::before{
+    content: url('../../../assets/icons/dropdown.svg');
+    position: absolute;
+    right: 14px;
+    z-index: 3;
+    top: 6px;
+  }
+  & svg{
+    display: none;
+  }
+}
