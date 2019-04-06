@@ -1,0 +1,15 @@
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/grid';
+
+.modal-title{
+  color: #7F7F7F !important;
+}
+
+@include media-breakpoint-up(md) {
+  .modal-body{
+    padding: 5rem 5rem !important;
+  } 
+}
