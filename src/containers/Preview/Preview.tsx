@@ -1,34 +1,12 @@
-import * as React from 'react'
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import './Preview.scss';
 
-export default class Preview extends React.Component<{}, IPreviewState> {
-  public state: IPreviewState = {
-    settings:{
-      fonts:{
-        color: '#333',
-        family:'asd',
-        size: 1.2
-      },
-      margins:{
-        bottom: 1.2,
-        left: 1.2,
-        right: 1.2,
-        top: 1.2
-      },
-      theme: 'string'
-    },
-    rows:[
-      {
-        cols:[
-          {id: 1, type: 'text', data:<h1>Hello world!</h1>}
-        ]
-      }
-    ]
-  }
+class Preview extends React.Component<{state: IPreviewState}, IPreviewState> {
 
   public render() {
-    const settings = this.state.settings;
+    const settings = this.props.state.settings;
     const styles = {
       marginLeft: `${settings.margins.left}rem`,
       marginRight: `${settings.margins.right}rem`,
@@ -41,7 +19,7 @@ export default class Preview extends React.Component<{}, IPreviewState> {
     return (
       <div style={styles}>
         {
-          this.state.rows.map((row, i)=>{
+          this.props.state.rows.map((row, i)=>{
             return (
             <Row key={i}>
               {row.cols.map(col=>{
@@ -56,7 +34,15 @@ export default class Preview extends React.Component<{}, IPreviewState> {
   }
 }
 
-interface IPreviewState{
+const MapStateToProps = (state:any) =>  {
+  return {
+    state: state.PreviewReducer
+  }
+}
+
+export default connect(MapStateToProps)(Preview);
+
+export interface IPreviewState{
   settings:{
     fonts:{
       color: string,
