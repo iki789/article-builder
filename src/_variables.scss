@@ -16,3 +16,10 @@ $input-focus-color: $primary-color;
 $input-focus-width: 2px;
 $input-focus-box-shadow: none;
 $input-placeholder-color: $light-blue;
+
+$modal-lg: 900px;
+$modal-backdrop-bg: $primary-color !default;
+$modal-backdrop-opacity: .2 !default;
+$modal-content-border-color: none;
+$modal-content-box-shadow-xs: 0 .25rem .5rem rgba($primary-color, .5) !default;
+$modal-content-box-shadow-sm-up: 0 .5rem 1rem rgba($primary-color, .5) !default;
