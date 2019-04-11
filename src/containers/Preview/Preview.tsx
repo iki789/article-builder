@@ -1,0 +1,72 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
+import './Preview.scss';
+
+class Preview extends React.Component<{state: IPreviewState}, IPreviewState> {
+
+  public render() {
+    const settings = this.props.state.settings;
+    const styles = {
+      marginLeft: `${settings.margins.left}rem`,
+      marginRight: `${settings.margins.right}rem`,
+      marginTop: `${settings.margins.top}rem`,
+      marginBottom: `${settings.margins.bottom}rem`,
+      fontFamily: `${settings.fonts.family}, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
+      fontSize: `${settings.fonts.size}rem`,
+      color: `${settings.fonts.color}`
+    }
+    return (
+      <div style={styles}>
+        {
+          this.props.state.rows.map((row, i)=>{
+            return (
+            <Row key={i}>
+              {row.cols.map(col=>{
+                return (<Col key={i}>{col.data}</Col>)
+              })}
+            </Row>
+            )
+          })
+        }
+      </div>
+    )
+  }
+}
+
+const MapStateToProps = (state:any) =>  {
+  return {
+    state: state.PreviewReducer
+  }
+}
+
+export default connect(MapStateToProps)(Preview);
+
+export interface IPreviewState{
+  settings:{
+    fonts:{
+      color: string,
+      family: string,
+      size: number
+    },
+    theme: string,
+    margins:{
+      bottom: number,
+      left: number,
+      right: number,
+      top: number
+    }
+  },
+  rows: IRow[]
+}
+
+interface IRow{
+  cols: ICol[]
+}
+
+interface ICol{
+    id: number,
+    type: string
+    data: any,
+    responsive?: {sm?: number, md?: number, lg?: number}
+}

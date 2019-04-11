@@ -3,6 +3,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 
 import './App.scss';
 import GloblaSettings from './containers/GlobalSettings/GlobalSettings'
+import Preview from './containers/Preview/Preview';
 
 class App extends React.Component {
   public render() {
@@ -13,7 +14,7 @@ class App extends React.Component {
             <GloblaSettings />
           </Col>
           <Col>
-            GF
+          <Preview /> 
           </Col>
         </Row>
       </Container>
