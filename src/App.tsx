@@ -4,6 +4,8 @@ import { Container, Col, Row } from 'react-bootstrap';
 import './App.scss';
 import GloblaSettings from './containers/GlobalSettings/GlobalSettings'
 import Preview from './containers/Preview/Preview';
+import Modal from './components/UI/Modal/Modal';
+import ComponentList from './components/BuilderComponents/BuilderComponentList/index';
 
 class App extends React.Component {
   public render() {
@@ -14,7 +16,10 @@ class App extends React.Component {
             <GloblaSettings />
           </Col>
           <Col>
-          <Preview /> 
+          <Preview />
+          <Modal show={true} title="Components" size="lg">
+          <ComponentList />
+          </Modal> 
           </Col>
         </Row>
       </Container>
