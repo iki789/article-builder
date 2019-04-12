@@ -25,7 +25,7 @@ export default class WrapperModal extends React.Component<IModalProps, IModalSta
       <div className="ModalComponent">
         <Modal show={this.state.show} {...this.props}>
           <Modal.Body>
-            <Modal.Title>{this.props.title}</Modal.Title>  
+            <Modal.Title as="h2">{this.props.title}</Modal.Title>  
             {this.props.children}
           </Modal.Body>
         </Modal>
