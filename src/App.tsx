@@ -25,8 +25,11 @@ class App extends React.Component<IAppProps, IAppState> {
           </Col>
           <Col>
           <Preview />
+          <div className="AddComponentButton">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg id='Add' transform='translate(-919 -442)'%3E%3Ccircle id='Ellipse_226' data-name='Ellipse 226' cx='20' cy='20' r='20' transform='translate(919 442)' fill='%23bce0fd'/%3E%3Cg id='_' data-name='+' transform='translate(630 343)'%3E%3Cpath id='Union_1' data-name='Union 1' d='M-4613,16V9h-7V7h7V0h2V7h7V9h-7v7Z' transform='translate(4921 111)' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A" />
+          </div>
           <Modal show={this.props.modalVisible} onHide={this.hideModal} title="Components" size="lg">
-          <ComponentList />
+            <ComponentList />
           </Modal> 
           </Col>
         </Row>
