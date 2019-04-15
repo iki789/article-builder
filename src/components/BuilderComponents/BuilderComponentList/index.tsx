@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './BuilderComponentList.scss';
 
-export default class ComponentList extends Component {
+import { ADD_ITEM_TO_ROW } from '../../../containers/Preview/store/actions';
+
+class ComponentList extends Component<any> {
   public components:Array<{label: string, type: string, icon: string}> = [
     {
       label: "text",
@@ -30,7 +33,7 @@ export default class ComponentList extends Component {
       <div className="ComponentList">
         {this.components.map(c=>{
           return (
-            <div key={c.type} title={c.label}>
+            <div key={c.type} title={c.label} onClick={this.props.onAddItem} >
               <img src={c.icon} alt={`${c.type} component`}/>
               <label>{c.label}</label>
             </div>
@@ -40,3 +43,11 @@ export default class ComponentList extends Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch:any) => {
+  return {
+    onAddItem: () => dispatch(ADD_ITEM_TO_ROW('text'))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ComponentList);
