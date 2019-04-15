@@ -30,7 +30,7 @@ class App extends React.Component<IAppProps, IAppState> {
               <GloblaSettings />
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="ComponentEditorWrapper">
-                  <TextEditor />
+                { <ComponentMount type={this.props.activeCol.type} /> }
                 </div>
               </div>
             </div>
