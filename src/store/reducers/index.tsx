@@ -1,7 +1,13 @@
 import * as ActionTypes from '../actions/actionTypes';
+import { ICol } from '../../containers/Preview/Preview';
 
 const initialState:IAppState = {
-  showModal: false
+  showModal: false,
+  activeCol: {
+    id: 0,
+    type: 'text',
+    data: 'Welcome'
+  }
 }
 
 const Reducer = (state = initialState, action:{type: string, payload: any}) => {
@@ -24,7 +30,8 @@ const Reducer = (state = initialState, action:{type: string, payload: any}) => {
 
 
 export interface IAppState{
-  showModal: boolean
+  showModal: boolean,
+  activeCol?: ICol
 }
 
 export default Reducer;
