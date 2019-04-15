@@ -57,7 +57,8 @@ export interface IPreviewState{
       top: number
     }
   },
-  rows: IRow[]
+  rows: IRow[],
+  colCount: number
 }
 
 interface IRow{

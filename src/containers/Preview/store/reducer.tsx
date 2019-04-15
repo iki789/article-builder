@@ -21,10 +21,11 @@ const initialState: IPreviewState = {
   rows:[
     {
       cols:[
-        {id: 1, type: 'text', data:<h1>Hello world!</h1>}
+        {id: 0, type: 'text', data:<h1>Hello world!</h1>}
       ]
     }
-  ]
+  ],
+  colCount: 0
 }
 
 export const PreviewReducer:Reducer = (state = initialState, action) => {
@@ -33,8 +34,9 @@ export const PreviewReducer:Reducer = (state = initialState, action) => {
       ...state,
       rows:[
         ...state.rows,
-        {cols: [{id: 2, type:'text', data: 'asd'}]}
-      ]  
+        {cols: [{id: state.colCount+1, type:'text', data: 'asd'}]}
+      ],
+      colCount: state.colCount+1  
     };
   }
   return state;
