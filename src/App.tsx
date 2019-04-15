@@ -6,10 +6,10 @@ import { Container, Col, Row } from 'react-bootstrap';
 import './App.scss';
 
 import GloblaSettings from './containers/GlobalSettings/GlobalSettings'
-import Preview from './containers/Preview/Preview';
+import Preview, { ICol } from './containers/Preview/Preview';
 import Modal from './components/UI/Modal/Modal';
 import ComponentList from './components/BuilderComponents/BuilderComponentList/index';
-import { TextEditor } from './components/BuilderComponents';
+import { ComponentMount } from './components/BuilderComponents';
 
 class App extends React.Component<IAppProps, IAppState> {
   
@@ -52,7 +52,8 @@ class App extends React.Component<IAppProps, IAppState> {
 
 const mapStateToProps = (state:any) => {
   return {
-    modalVisible: state.rootReducer.showModal
+    modalVisible: state.rootReducer.showModal,
+    activeCol: state.rootReducer.activeCol
   }
 }
 
@@ -66,7 +67,8 @@ const mapDispatchToProps = (dispatch:any) => {
 interface IAppProps{
   modalVisible: boolean,
   onHideModal: () => void,
-  onShowModal: () => void
+  onShowModal: () => void,
+  activeCol: ICol
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
