@@ -5,4 +5,17 @@
   background-color: $light-blue ;
   height: 100vh;
   min-height: 900px;
+  >.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+  }
+}
+
+.ComponentEditorWrapper{
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 10px;
 }

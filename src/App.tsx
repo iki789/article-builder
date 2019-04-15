@@ -9,6 +9,7 @@ import GloblaSettings from './containers/GlobalSettings/GlobalSettings'
 import Preview from './containers/Preview/Preview';
 import Modal from './components/UI/Modal/Modal';
 import ComponentList from './components/BuilderComponents/BuilderComponentList/index';
+import { TextEditor } from './components/BuilderComponents';
 
 class App extends React.Component<IAppProps, IAppState> {
   
@@ -25,7 +26,12 @@ class App extends React.Component<IAppProps, IAppState> {
       <Container fluid={true}>
         <Row>
           <Col className="Config-pane">
-            <GloblaSettings />
+            <div className="wrapper">
+              <GloblaSettings />
+              <div className="d-flex justify-content-center align-items-center h-100">
+                <TextEditor />
+              </div>
+            </div>
           </Col>
           <Col>
           <Preview />
