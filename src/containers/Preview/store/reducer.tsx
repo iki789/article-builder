@@ -28,5 +28,14 @@ const initialState: IPreviewState = {
 }
 
 export const PreviewReducer:Reducer = (state = initialState, action) => {
+  if(action.type === "ADD_ITEM_TO_ROW"){
+    state = {
+      ...state,
+      rows:[
+        ...state.rows,
+        {cols: [{id: 2, type:'text', data: 'asd'}]}
+      ]  
+    };
+  }
   return state;
 }
