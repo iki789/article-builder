@@ -34,7 +34,7 @@ export const PreviewReducer:Reducer = (state = initialState, action) => {
       ...state,
       rows:[
         ...state.rows,
-        {cols: [{id: state.colCount+1, type:'text', data: 'asd'}]}
+        {cols: [{id: state.colCount+1, type:action.payload, data: 'asd'}]}
       ],
       colCount: state.colCount+1  
     };
