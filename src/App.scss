@@ -10,12 +10,11 @@
     flex-direction: column;
     height: 100%; 
   }
-}
-
-.ComponentEditorWrapper{
-  max-width: 600px;
-  margin: auto;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 10px;
+  .ComponentEditorWrapper{
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #F1F9FF;
+    border-radius: 10px;
+  }
 }

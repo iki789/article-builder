@@ -29,7 +29,9 @@ class App extends React.Component<IAppProps, IAppState> {
             <div className="wrapper">
               <GloblaSettings />
               <div className="d-flex justify-content-center align-items-center h-100">
-                <TextEditor />
+                <div className="ComponentEditorWrapper">
+                  <TextEditor />
+                </div>
               </div>
             </div>
           </Col>
