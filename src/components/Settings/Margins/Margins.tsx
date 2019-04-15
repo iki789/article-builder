@@ -6,7 +6,7 @@ import * as MarginIcon from "../../../assets/icons/ic_border_right_48px.svg"
 
 const Margins = () => {
   return (
-    <div className="wrapper">
+    <div className="Marginswrapper">
       <Form.Label className="w-100">Margins</Form.Label>
       <Form.Group className="d-flex align-items-center">
         <Form.Label className="mr-2"><img src={MarginIcon} className="MarginLeft" /></Form.Label>
