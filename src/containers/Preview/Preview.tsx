@@ -65,7 +65,7 @@ interface IRow{
   cols: ICol[]
 }
 
-interface ICol{
+export interface ICol{
     id: number,
     type: string
     data: any,
