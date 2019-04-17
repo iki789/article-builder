@@ -2,12 +2,7 @@ import * as ActionTypes from '../actions/actionTypes';
 import { ICol } from '../../containers/Preview/Preview';
 
 const initialState:IAppState = {
-  showModal: false,
-  activeCol: {
-    id: 0,
-    type: 'text',
-    data: 'Welcome'
-  }
+  showModal: false
 }
 
 const Reducer = (state = initialState, action:{type: string, payload: any}) => {
