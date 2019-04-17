@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import './TextEditor.scss';
 import ReactQuill from 'react-quill';
 
@@ -10,7 +9,7 @@ class TextEditor extends React.Component<ITextEditorProps>{
   }
   
   public handleChange(value:any) {
-    this.setState({ text: value })
+    this.props.onChange(value);
   }
 
   public render(){
@@ -31,14 +30,12 @@ class TextEditor extends React.Component<ITextEditorProps>{
       'link', 'image'
     ];
     
-    const editorValue = ReactDOMServer.renderToStaticMarkup(this.props.value);
-
     return (
       <div>
         <ReactQuill
           formats={formats}
           modules={modules} 
-          value={editorValue}
+          value={this.props.value}
           onChange={this.handleChange}
           theme="snow"/> 
       </div>
@@ -49,5 +46,6 @@ class TextEditor extends React.Component<ITextEditorProps>{
 export default TextEditor;
 
 interface ITextEditorProps{
-  value: React.ReactElement<any>
+  value: string,
+  onChange: (value: string) => any
 }
