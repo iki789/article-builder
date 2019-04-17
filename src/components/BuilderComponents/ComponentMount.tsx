@@ -2,7 +2,7 @@ import React from 'react';
 import { TextEditor, Image, Video } from './index';
 
 const ComponentMount = (props:{type: string, data?: React.ReactElement | any}) => {
-  let toMountComponent = <TextEditor value={<div>asds</div>} />;
+  let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
   
   switch(props.type){
     case 'text':
