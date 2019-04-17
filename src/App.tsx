@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch:any) => {
   }
 }
 
-interface IAppProps{
+export interface IAppProps{
   modalVisible: boolean,
   onHideModal: () => void,
   onShowModal: () => void,
