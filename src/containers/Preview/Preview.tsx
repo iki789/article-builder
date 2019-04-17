@@ -23,7 +23,7 @@ class Preview extends React.Component<{state: IPreviewState}, IPreviewState> {
             return (
             <Row key={i}>
               {row.cols.map(col=>{
-                return (<Col key={i}>{col.data}</Col>)
+                return (<Col key={col.id}>{col.data}</Col>)
               })}
             </Row>
             )
