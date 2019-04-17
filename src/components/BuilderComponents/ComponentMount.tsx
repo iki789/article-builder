@@ -1,12 +1,12 @@
 import React from 'react';
 import { TextEditor, Image, Video } from './index';
 
-const ComponentMount = (props:{type: string, data?: any}) => {
-  let toMountComponent = <TextEditor />;
+const ComponentMount = (props:{type: string, data?: React.ReactElement | any}) => {
+  let toMountComponent = <TextEditor value={<div>asds</div>} />;
   
   switch(props.type){
     case 'text':
-      toMountComponent = <TextEditor />;
+      toMountComponent = <TextEditor value={props.data} />;
       break;
     case 'image':
       toMountComponent = <Image />;
