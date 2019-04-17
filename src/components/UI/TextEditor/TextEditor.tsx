@@ -1,17 +1,17 @@
 import * as React from 'react';
-
+import ReactDOMServer from 'react-dom/server';
 import './TextEditor.scss';
 import ReactQuill from 'react-quill';
 
-class TextEditor extends React.Component{
-  public state={
-    text: ''
+class TextEditor extends React.Component<ITextEditorProps>{
+  constructor(props: ITextEditorProps) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  constructor(props:any) {
-    super(props)
-    this.state = { text: '' } // You can also pass a Quill Delta here
-    this.handleChange = this.handleChange.bind(this);
+  public componentWillUpdate(){
+    console.log("Will update");
+    this.handleChange('');
   }
 
   public handleChange(value:any) {
@@ -35,13 +35,15 @@ class TextEditor extends React.Component{
       'list', 'bullet', 'indent',
       'link', 'image'
     ];
+    
+    const editorValue = ReactDOMServer.renderToStaticMarkup(this.props.value);
 
     return (
       <div>
         <ReactQuill
           formats={formats}
           modules={modules} 
-          value={this.state.text}
+          value={editorValue}
           onChange={this.handleChange}
           theme="snow"/> 
       </div>
@@ -50,3 +52,7 @@ class TextEditor extends React.Component{
 }
 
 export default TextEditor;
+
+interface ITextEditorProps{
+  value: React.ReactElement<any>
+}
