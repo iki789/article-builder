@@ -20,6 +20,13 @@ const Reducer = (state = initialState, action:{type: string, payload: any}) => {
     }
   }
 
+  if(action.type === ActionTypes.ACTIVATE_COL){
+    state = {
+      ...state,
+      activeCol: action.payload
+    }
+  }
+
   return state;
 }
 
