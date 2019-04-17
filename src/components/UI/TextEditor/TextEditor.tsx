@@ -8,12 +8,7 @@ class TextEditor extends React.Component<ITextEditorProps>{
     super(props)
     this.handleChange = this.handleChange.bind(this);
   }
-
-  public componentWillUpdate(){
-    console.log("Will update");
-    this.handleChange('');
-  }
-
+  
   public handleChange(value:any) {
     this.setState({ text: value })
   }
