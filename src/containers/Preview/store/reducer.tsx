@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { Reducer } from 'redux';
+import * as ActionTypes from './actionTypes';
 
-import { IPreviewState } from '../Preview';
+import { IPreviewState, IRow, ICol } from '../Preview';
 
 const initialState: IPreviewState = {
   settings:{
@@ -21,23 +21,39 @@ const initialState: IPreviewState = {
   rows:[
     {
       cols:[
-        {id: 0, type: 'text', data:<h1>Hello world!</h1>}
+        {id: 0, type: 'text', data:'<h1>Hello World</h1>'}
       ]
     }
   ],
   colCount: 0
 }
 
-export const PreviewReducer:Reducer = (state = initialState, action) => {
-  if(action.type === "ADD_ITEM_TO_ROW"){
+export const PreviewReducer:Reducer = (state:IPreviewState = initialState, action) => {
+  if(action.type === ActionTypes.ADD_ITEM_TO_ROW){
     state = {
       ...state,
       rows:[
         ...state.rows,
-        {cols: [{id: state.colCount+1, type:action.payload, data: 'asd'}]}
+        {cols: [{id: state.colCount+1, type:action.payload, data: '<div>New Item</div>'}]}
       ],
       colCount: state.colCount+1  
     };
   }
+  
+  if(action.type === ActionTypes.UPDATE_COL){
+    const rows:IRow[] = [...state.rows];
+    rows.map((row:IRow) => {
+      row.cols.map((col:ICol)=>{
+        if(col.id === action.payload.id) {col.data = action.payload.data;}
+        return col;
+      })
+      return row;
+    })
+    state = {
+      ...state,
+      rows  
+    };
+  }
+
   return state;
 }
