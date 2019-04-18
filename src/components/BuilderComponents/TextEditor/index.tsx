@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDomServer from 'react-dom/server';
 import { connect } from 'react-redux';
 import { UPDATE_COL } from '../../../store/actions/app';
 import TextEditor from '../../UI/TextEditor/TextEditor';
@@ -9,14 +8,14 @@ class Editor extends React.Component<IEditorProps>{
 
   public handleChange = (value: string) => {
     const col = this.props.activeCol;
-    col.data = React.createElement(value);
+    col.data = value;
     this.props.onUpdate(col);
     return value;
   }
   
   public render() {
     return (
-      <TextEditor onChange={this.handleChange} value={ReactDomServer.renderToString(this.props.activeCol.data)} />
+      <TextEditor onChange={this.handleChange} value={this.props.activeCol.data} />
     );
   }
 }
