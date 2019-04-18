@@ -18,3 +18,9 @@ export const ACTIVATE_COL = (data: ICol) => {
     type: actionTypes.ACTIVATE_COL, payload: data
   }
 }
+
+export const UPDATE_COL = (data: ICol) => {
+  return {
+    type: actionTypes.UPDATE_COL, payload: data
+  }
+}

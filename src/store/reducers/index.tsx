@@ -5,7 +5,7 @@ const initialState:IAppState = {
   showModal: false
 }
 
-const Reducer = (state = initialState, action:{type: string, payload: any}) => {
+const Reducer = (state: IAppState = initialState, action:{type: string, payload: any}) => {
   if(action.type === ActionTypes.HIDE_MODAL){
     state = {
       ...state,
@@ -21,6 +21,13 @@ const Reducer = (state = initialState, action:{type: string, payload: any}) => {
   }
 
   if(action.type === ActionTypes.ACTIVATE_COL){
+    state = {
+      ...state,
+      activeCol: action.payload
+    }
+  }
+
+  if(action.type === ActionTypes.UPDATE_COL){
     state = {
       ...state,
       activeCol: action.payload
