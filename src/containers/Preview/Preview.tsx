@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
-import { ACTIVATE_COL } from 'src/store/actions/app';
+import { ACTIVATE_COL } from '../../store/actions/app'
 import './Preview.scss';
 
 class Preview extends React.Component<IPreviewProps, IPreviewState> {
@@ -28,7 +28,7 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
             return (
             <Row key={i}>
               {row.cols.map(col=>{
-                return (<Col key={col.id} onClick={this.onSelect.bind(this, col)} >{col.data}</Col>)
+                return (<Col key={col.id} dangerouslySetInnerHTML={{__html: col.data}} onClick={this.onSelect.bind(this, col)} />)
               })}
             </Row>
             )
@@ -78,7 +78,7 @@ export interface IPreviewProps{
   onSelect: (payload: ICol) => void
 }
 
-interface IRow{
+export interface IRow{
   cols: ICol[]
 }
 
