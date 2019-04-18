@@ -2,15 +2,10 @@ import * as ActionTypes from '../actions/actionTypes';
 import { ICol } from '../../containers/Preview/Preview';
 
 const initialState:IAppState = {
-  showModal: false,
-  activeCol: {
-    id: 0,
-    type: 'text',
-    data: 'Welcome'
-  }
+  showModal: false
 }
 
-const Reducer = (state = initialState, action:{type: string, payload: any}) => {
+const Reducer = (state: IAppState = initialState, action:{type: string, payload: any}) => {
   if(action.type === ActionTypes.HIDE_MODAL){
     state = {
       ...state,
@@ -22,6 +17,20 @@ const Reducer = (state = initialState, action:{type: string, payload: any}) => {
     state = {
       ...state,
       showModal: true
+    }
+  }
+
+  if(action.type === ActionTypes.ACTIVATE_COL){
+    state = {
+      ...state,
+      activeCol: action.payload
+    }
+  }
+
+  if(action.type === ActionTypes.UPDATE_COL){
+    state = {
+      ...state,
+      activeCol: action.payload
     }
   }
 

@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
+import { ACTIVATE_COL } from '../../store/actions/app'
 import './Preview.scss';
 
-class Preview extends React.Component<{state: IPreviewState}, IPreviewState> {
+class Preview extends React.Component<IPreviewProps, IPreviewState> {
+
+  public onSelect = (col: ICol) => {
+    this.props.onSelect(col);
+  }
 
   public render() {
     const settings = this.props.state.settings;
@@ -23,7 +28,7 @@ class Preview extends React.Component<{state: IPreviewState}, IPreviewState> {
             return (
             <Row key={i}>
               {row.cols.map(col=>{
-                return (<Col key={i} dangerouslySetInnerHTML={{__html: col.data}} />)
+                return (<Col key={col.id} dangerouslySetInnerHTML={{__html: col.data}} onClick={this.onSelect.bind(this, col)} />)
               })}
             </Row>
             )
@@ -34,13 +39,20 @@ class Preview extends React.Component<{state: IPreviewState}, IPreviewState> {
   }
 }
 
-const MapStateToProps = (state:any) =>  {
+const mapStateToProps = (state:any) =>  {
   return {
     state: state.PreviewReducer
   }
 }
 
-export default connect(MapStateToProps)(Preview);
+const mapDispatchToProps = (dispatch: any) =>  {
+  return {
+    onSelect: (payload: ICol) => dispatch(ACTIVATE_COL(payload))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preview);
 
 export interface IPreviewState{
   settings:{
@@ -61,7 +73,12 @@ export interface IPreviewState{
   colCount: number
 }
 
-interface IRow{
+export interface IPreviewProps{
+  state: IPreviewState,
+  onSelect: (payload: ICol) => void
+}
+
+export interface IRow{
   cols: ICol[]
 }
 

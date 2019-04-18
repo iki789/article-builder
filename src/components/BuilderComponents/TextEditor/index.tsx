@@ -1,42 +1,29 @@
 import React from 'react';
-import ReactDomServer from 'react-dom/server';
 import { connect } from 'react-redux';
+import { UPDATE_COL } from '../../../store/actions/app';
 import TextEditor from '../../UI/TextEditor/TextEditor';
+import { ICol } from 'src/containers/Preview/Preview';
 
-class Editor extends React.Component<IEditorProps, IEditorState>{
+class Editor extends React.Component<IEditorProps>{
 
-  public state: IEditorState = {
-    value: ""
-  }
-
-  public componentDidMount(){
-    console.log(this.props.activeCol)
-    this.setState({
-      value: ReactDomServer.renderToString(this.props.activeCol.data)
-    })
-  }
-  
   public handleChange = (value: string) => {
-    this.setState({
-      value
-    });
+    const col = this.props.activeCol;
+    col.data = value;
+    this.props.onUpdate(col);
     return value;
   }
   
   public render() {
     return (
-      <TextEditor onChange={this.handleChange} value={this.state.value} />
+      <TextEditor onChange={this.handleChange} value={this.props.activeCol.data} />
     );
   }
 }
 
 interface IEditorProps{
   value: React.ReactElement<any>,
-  activeCol: any
-}
-
-interface IEditorState{
-  value: string
+  activeCol: ICol,
+  onUpdate: (Col: ICol) => any
 }
 
 const mapStateToProps = (state: any) => {
@@ -45,4 +32,10 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps)(Editor);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    onUpdate: (col: ICol) => dispatch(UPDATE_COL(col))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
