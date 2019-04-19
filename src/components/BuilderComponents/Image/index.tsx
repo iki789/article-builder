@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
  
-const Image = () => {
+export const ImageForm = () => {
   return(
     <React.Fragment>
       <Row>
@@ -25,5 +25,3 @@ const Image = () => {
     </React.Fragment>
   )
 }
-
-export default Image;
