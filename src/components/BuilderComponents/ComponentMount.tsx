@@ -1,15 +1,15 @@
 import React from 'react';
-import { TextEditor, ImageForm, Video } from './index';
+import { TextEditor, Video, Image } from './index';
 
 const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
   let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
   
   switch(props.type){
     case 'text':
-      toMountComponent = <TextEditor value={props.data} />;
+      toMountComponent = <div dangerouslySetInnerHTML={{__html: props.data}} />;
       break;
     case 'image':
-      toMountComponent = <ImageForm />;
+      toMountComponent = <Image />;
       break;
     case 'video':
       toMountComponent = <Video />;
