@@ -7,7 +7,7 @@ interface IImage{
   url?: string
 }
 
-export const ImageForm = (props:IImage) => {
+export const ImageForm: React.StatelessComponent<IImage> = (props:IImage) => {
   return(
     <React.Fragment>
       <Row>
@@ -36,9 +36,8 @@ export const ImageForm = (props:IImage) => {
   )
 }
 
-export const Image = (props:IImage) => {
+export const Image: React.StatelessComponent<IImage> = (props:IImage) => {
   let img = <img src={props.src} /> ;
-  
   if(props.url){
     img = (
       <a href={props.url} target="_blank">
@@ -52,4 +51,8 @@ export const Image = (props:IImage) => {
       { img }
     </div>
   );
-} 
+}
+
+Image.defaultProps = {
+  src: require('./placeholder.svg')
+}
