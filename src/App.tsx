@@ -9,7 +9,7 @@ import GloblaSettings from './containers/GlobalSettings/GlobalSettings'
 import Preview, { ICol } from './containers/Preview/Preview';
 import Modal from './components/UI/Modal/Modal';
 import ComponentList from './components/BuilderComponents/BuilderComponentList/index';
-import { ComponentMount } from './components/BuilderComponents';
+import { ComponentFormMount } from './components/BuilderComponents';
 
 class App extends React.Component<IAppProps, IAppState> {
   
@@ -30,7 +30,7 @@ class App extends React.Component<IAppProps, IAppState> {
               <GloblaSettings />
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="ComponentEditorWrapper">
-                { this.props.activeCol ? <ComponentMount type={this.props.activeCol.type} /> : <ComponentMount /> }
+                { this.props.activeCol ? <ComponentFormMount type={this.props.activeCol.type} /> : <ComponentFormMount /> }
                 </div>
               </div>
             </div>
