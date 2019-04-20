@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { ACTIVATE_COL } from '../../store/actions/app'
 import './Preview.scss';
+import { ComponentMount } from '../../components/BuilderComponents'
 
 class Preview extends React.Component<IPreviewProps, IPreviewState> {
 
@@ -28,7 +29,11 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
             return (
             <Row key={i}>
               {row.cols.map(col=>{
-                return (<Col key={col.id} dangerouslySetInnerHTML={{__html: col.data}} onClick={this.onSelect.bind(this, col)} />)
+                return (
+                <Col key={col.id}>
+                  <ComponentMount type={col.type} data={col.data} />
+                </Col>
+                )
               })}
             </Row>
             )
