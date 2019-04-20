@@ -4,7 +4,7 @@ import './BuilderComponentList.scss';
 
 import { ADD_ITEM_TO_ROW } from '../../../containers/Preview/store/actions';
 
-class ComponentList extends Component<any> {
+class ComponentList extends Component<IComponentListProps> {
   public components:Array<{label: string, type: string, icon: string}> = [
     {
       label: "text",
@@ -33,7 +33,7 @@ class ComponentList extends Component<any> {
       <div className="ComponentList">
         {this.components.map(c=>{
           return (
-            <div key={c.type} title={c.label} onClick={this.props.onAddItem} >
+            <div key={c.type} title={c.label} onClick={this.props.onAddItem.bind(this, c.type)} >
               <img src={c.icon} alt={`${c.type} component`}/>
               <label>{c.label}</label>
             </div>
@@ -44,9 +44,13 @@ class ComponentList extends Component<any> {
   }
 }
 
+interface IComponentListProps{
+  onAddItem: (itemType: string) => void
+}
+
 const mapDispatchToProps = (dispatch:any) => {
   return {
-    onAddItem: () => dispatch(ADD_ITEM_TO_ROW('text'))
+    onAddItem: (type: string) => dispatch(ADD_ITEM_TO_ROW(type))
   }
 }
 
