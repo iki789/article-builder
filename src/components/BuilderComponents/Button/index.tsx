@@ -8,14 +8,14 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
   
   public state: IButtonState = {
     label: this.props.label,
-    url: this.props.url || "#",
+    url: this.props.url || "",
     type: this.props.type || "default"
   }
 
-  public handleChange = (e: React.ChangeEvent<any>) => {
+  public handleChange = (ColField: "label" | "url" | "" , e: React.ChangeEvent<any>) => {
     this.setState({
       ...this.state,
-      label: e.target.value
+      [ColField]: e.target.value
     }, ()=>{
       this.updateCol();
     })
@@ -25,6 +25,7 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
   public updateCol = () => {
     const col: ICol = this.props.activeCol;
     col.data.label = this.state.label;
+    col.data.url = this.state.url;
     this.props.updateCol(col);
   }
 
@@ -40,12 +41,16 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
               <Form.Control 
                 type="text" 
                 value={this.state.label}
-                onChange={this.handleChange} 
+                onChange={this.handleChange.bind(this, 'label')} 
                 placeholder="View now" />
             </Form.Group>
             <Form.Group controlId="ButtonLocation">
               <Form.Label>URL Location</Form.Label>
-              <Form.Control type="text" placeholder="https://foobar.com" />
+              <Form.Control 
+                type="text" 
+                value={this.state.url}
+                onChange={this.handleChange.bind(this, 'url')} 
+                placeholder="https://foobar.com" />
             </Form.Group>
             <Form.Group controlId="ButtonType">
               <Form.Label>Type</Form.Label>
