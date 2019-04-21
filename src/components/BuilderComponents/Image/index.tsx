@@ -5,11 +5,29 @@ import './Image.scss';
 import { ICol } from 'src/containers/Preview/Preview';
 import { UPDATE_COL } from '../../../store/actions/app';
 
-class ImageControl extends React.Component<IImageFormProps>{
+class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
 
-  public onUpdate = (payload: any) =>{
-    // const col = this.props.activeCol;
-    console.log(this.props);
+  public state:IImageFormState = {
+    src: this.props.src,
+    caption: this.props.caption,
+    url: this.props.url
+  }
+
+  public updateState = () =>{
+    const col = this.props.activeCol;
+    col.data.src = this.state.src;
+    col.data.caption = this.state.caption;
+    col.data.url = this.state.url;
+    this.props.onUpdate(col);
+  }
+
+  public handleSrcChange = (e: React.ChangeEvent<any>) => {
+    this.setState({
+      ...this.state,
+      src: e.target.value
+    });
+    this.updateState();
+    return e.target.value;
   }
 
   public render(){
@@ -24,7 +42,7 @@ class ImageControl extends React.Component<IImageFormProps>{
                 <Form.Control 
                   type="text" 
                   placeholder="https://imgur.com/img.jpg" 
-                  value={this.props.src} onChange={this.onUpdate} />
+                  value={this.state.src} onChange={this.handleSrcChange} />
               </Form.Group>
               <Form.Group controlId="ImageCaption">
                 <Form.Label>Image Caption</Form.Label>
@@ -49,10 +67,15 @@ interface IImageFormProps{
   src?: string,
   caption?: string,
   url?: string,
-  onUpdate?: (payload: any) => void,
+  onUpdate: (payload: ICol) => void,
   activeCol: ICol
 }
 
+interface IImageFormState{
+  src?: string,
+  caption?: string,
+  url?: string,
+}
 
 interface IImageProps{
   src?: string,
