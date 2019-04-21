@@ -3,29 +3,37 @@ import { connect } from 'react-redux';
 import { UPDATE_COL } from '../../../containers/Preview/store/actions'
 import { Row, Col, Form, Button as BButton } from 'react-bootstrap';
 import { ICol } from 'src/containers/Preview/Preview';
+import './Button.scss';
 
 export class ButtonForm extends React.Component<IButtonControlProps, IButtonState>{
   
   public state: IButtonState = {
     label: this.props.label,
     url: this.props.url || "",
+    block: this.props.block || false,
     type: this.props.type || "default"
   }
 
-  public handleChange = (ColField: "label" | "url" | "" , e: React.ChangeEvent<any>) => {
+  public handleChange = (ColField: "label" | "url" | "block" , e: React.ChangeEvent<any>) => {
+    let value = e.target.value;
+    // if checkbox - on
+    if(value === "on"){
+      value = !this.state.block;
+    }  
     this.setState({
       ...this.state,
-      [ColField]: e.target.value
+      [ColField]: value
     }, ()=>{
       this.updateCol();
     })
-    return e.target.value;
+    return value;
   }
 
   public updateCol = () => {
     const col: ICol = this.props.activeCol;
     col.data.label = this.state.label;
     col.data.url = this.state.url;
+    col.data.block = this.state.block;
     this.props.updateCol(col);
   }
 
@@ -60,7 +68,12 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="ButtonFullWidth">
-              <Form.Check custom={true} type="checkbox" label="Button is full-width" />
+              <Form.Check 
+                custom={true} 
+                type="checkbox"
+                onChange={this.handleChange.bind(this, 'block')} 
+                checked={this.state.block ? true : false}
+                label="Button is full-width" />
             </Form.Group>
             <Form.Group>
               <BButton>Create</BButton>
@@ -106,7 +119,7 @@ export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(Button
 export const Button:React.StatelessComponent<IButtonProps> = (props) => {
   
   let btn = (
-    <BButton>
+    <BButton className={props.block ? "Button-block" : ""}>
       {props.label}
     </BButton>
   );
