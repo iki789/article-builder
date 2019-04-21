@@ -9,7 +9,7 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       toMountComponent = <TextEditor value={props.data} />;
       break;
     case 'image':
-      toMountComponent = <ImageForm />;
+      toMountComponent = <ImageForm src={props.data.src} />;
       break;
     case 'video':
       toMountComponent = <Video />;
