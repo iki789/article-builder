@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { UPDATE_COL } from '../../../containers/Preview/store/actions'
 import { Row, Col, Form, Button as BButton } from 'react-bootstrap';
+import { ICol } from 'src/containers/Preview/Preview';
 
-export class ButtonControl extends React.Component<IButtonProps, IButtonState>{
+export class ButtonForm extends React.Component<IButtonControlProps, IButtonState>{
   
   public state: IButtonState = {
     label: this.props.label,
@@ -14,8 +16,16 @@ export class ButtonControl extends React.Component<IButtonProps, IButtonState>{
     this.setState({
       ...this.state,
       label: e.target.value
+    }, ()=>{
+      this.updateCol();
     })
     return e.target.value;
+  }
+
+  public updateCol = () => {
+    const col: ICol = this.props.activeCol;
+    col.data.label = this.state.label;
+    this.props.updateCol(col);
   }
 
   public render(){
@@ -58,13 +68,13 @@ export class ButtonControl extends React.Component<IButtonProps, IButtonState>{
   }
 }
 
-connect()(ButtonControl);
-
-interface IButtonProps{
+interface IButtonControlProps{
   label: string,
   url?: string,
   type?: 'default' | 'outlined',
-  block?: boolean 
+  block?: boolean,
+  updateCol: (Col: ICol) => void,
+  activeCol: ICol
 }
 
 interface IButtonState{
@@ -74,7 +84,21 @@ interface IButtonState{
   block?: boolean
 }
 
-export const Button:React.StatelessComponent<IButtonProps> = (props) => {
+const mapStateToProps = (state: any) => {
+  return {
+    activeCol: state.rootReducer.activeCol
+  }
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    updateCol: (col:ICol) => dispatch(UPDATE_COL(col))
+  }
+}
+
+export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(ButtonForm);
+
+export const Button:React.StatelessComponent<any> = (props) => {
   return (
     <BButton>
       {props.label}
