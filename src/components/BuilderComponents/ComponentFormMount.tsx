@@ -16,7 +16,7 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       break;
     default:
       toMountComponent = (
-        <div>
+        <div style={{textAlign: 'center'}}>
           Select a Component to edit
         </div>
       )
