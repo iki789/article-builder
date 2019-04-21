@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextEditor, ImageForm, Video } from './index';
+import { TextEditor, ImageForm, Video, ButtonControl } from './index';
 
 const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
   let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
@@ -13,6 +13,9 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       break;
     case 'video':
       toMountComponent = <Video />;
+      break;
+    case 'button':
+      toMountComponent = <ButtonControl label="Submit" />;
       break;
     default:
       toMountComponent = (
