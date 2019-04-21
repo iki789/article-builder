@@ -133,7 +133,6 @@ export const Image: React.StatelessComponent<IImageProps> = (props:IImageProps) 
   ) ;
   if(props.url){
     const handleLinkClick = (event: React.MouseEvent):boolean => {
-      console.log("fired")
       event.preventDefault();
       return false;
     }
