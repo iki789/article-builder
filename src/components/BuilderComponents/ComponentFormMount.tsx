@@ -15,7 +15,7 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       toMountComponent = <Video />;
       break;
     case 'button':
-      toMountComponent = <ButtonControl label={props.data.label} />;
+      toMountComponent = <ButtonControl label={props.data.label} url={props.data.url} />;
       break;
     default:
       toMountComponent = (
