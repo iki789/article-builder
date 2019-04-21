@@ -9,8 +9,8 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
 
   public state:IImageFormState = {
     src: this.props.src,
-    caption: this.props.caption,
-    url: this.props.url
+    caption: this.props.caption ? this.props.caption : '',
+    url: this.props.url ? this.props.url : ''
   }
 
   public updateState = () =>{
@@ -31,6 +31,26 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
     return e.target.value;
   }
 
+  public handleCaptionChange = (e: React.ChangeEvent<any>)=> {
+    this.setState({
+      ...this.state,
+      caption: e.target.value
+    }, () => {
+      this.updateState();
+    }); 
+    return e.target.value;
+  }
+
+  public handleUrlChange = (e: React.ChangeEvent<any>) => {
+    this.setState({
+      ...this.state,
+      url: e.target.value
+    }, () => {
+      this.updateState();
+    }); 
+    return e.target.value;
+  }
+
   public render(){
     return(
       <React.Fragment>
@@ -47,11 +67,17 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
               </Form.Group>
               <Form.Group controlId="ImageCaption">
                 <Form.Label>Image Caption</Form.Label>
-                <Form.Control type="text" placeholder="A beautiful kitten" />
+                <Form.Control 
+                  type="text" 
+                  placeholder="A beautiful kitten" 
+                  value={this.state.caption} onChange={this.handleCaptionChange} />
               </Form.Group>
               <Form.Group controlId="ImageURL">
                 <Form.Label>Image URL</Form.Label>
-                <Form.Control type="text" placeholder="" />
+                <Form.Control 
+                  type="text" 
+                  placeholder={this.props.url} 
+                  value={this.state.url} onChange={this.handleUrlChange} />
               </Form.Group>
               <Form.Group>
                 <Button>Add Image</Button>
@@ -100,23 +126,28 @@ export const ImageForm = connect(mapStateToProps, mapDispatchToProps)(ImageContr
 
 export const Image: React.StatelessComponent<IImageProps> = (props:IImageProps) => {
   let img = (
-    <div className="image-component">
+    <React.Fragment>
       <img src={props.src} />
-      <p>Credits</p>
-    </div>
+      {props.caption ? <p>{props.caption}</p> : null}
+    </React.Fragment>
   ) ;
   if(props.url){
+    const handleLinkClick = (event: React.MouseEvent):boolean => {
+      console.log("fired")
+      event.preventDefault();
+      return false;
+    }
     img = (
-      <a href={props.url} target="_blank">
-        <img src={props.src} />
+      <a href={props.url} target="_blank" onClick={handleLinkClick} >
+        { img }
       </a>
     );
   }
 
   return(
-    <React.Fragment>
+    <div className="image-component">
       { img }
-    </React.Fragment>
+    </div>
   );
 }
 

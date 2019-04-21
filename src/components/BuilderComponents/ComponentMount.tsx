@@ -9,7 +9,7 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       toMountComponent = <div dangerouslySetInnerHTML={{__html: props.data}} />;
       break;
     case 'image':
-      toMountComponent = <Image src={props.data.src} />;
+      toMountComponent = <Image src={props.data.src} caption={props.data.caption} url={props.data.url} />;
       break;
     case 'video':
       toMountComponent = <Video />;
