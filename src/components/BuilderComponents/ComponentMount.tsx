@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextEditor, Video, Image } from './index';
+import { TextEditor, Video, Image, Button } from './index';
 
 const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
   let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
@@ -10,6 +10,9 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       break;
     case 'image':
       toMountComponent = <Image src={props.data.src} caption={props.data.caption} url={props.data.url} />;
+      break;
+    case 'button':
+      toMountComponent = <Button label={props.data.label} />;
       break;
     case 'video':
       toMountComponent = <Video />;
