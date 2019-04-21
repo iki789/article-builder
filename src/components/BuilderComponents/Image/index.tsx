@@ -15,7 +15,7 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
 
   public updateState = () =>{
     const col = this.props.activeCol;
-    col.data.src = this.state.src;
+    col.data.src = decodeURIComponent(this.state.src);
     col.data.caption = this.state.caption;
     col.data.url = this.state.url;
     this.props.onUpdate(col);
@@ -25,8 +25,9 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
     this.setState({
       ...this.state,
       src: e.target.value
+    }, () => {
+      this.updateState();
     });
-    this.updateState();
     return e.target.value;
   }
 
@@ -64,7 +65,7 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
 }
 
 interface IImageFormProps{
-  src?: string,
+  src: string,
   caption?: string,
   url?: string,
   onUpdate: (payload: ICol) => void,
@@ -72,7 +73,7 @@ interface IImageFormProps{
 }
 
 interface IImageFormState{
-  src?: string,
+  src: string,
   caption?: string,
   url?: string,
 }
