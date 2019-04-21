@@ -98,10 +98,37 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(ButtonForm);
 
-export const Button:React.StatelessComponent<any> = (props) => {
-  return (
+export const Button:React.StatelessComponent<IButtonProps> = (props) => {
+  
+  let btn = (
     <BButton>
       {props.label}
     </BButton>
   );
-} 
+
+  if(props.url){
+    const preventUrlRedirect = (e: React.MouseEvent<any>) => {
+      e.preventDefault();
+      return false;
+    }
+    btn = (
+      <a href={props.url} onClick={preventUrlRedirect}>
+        { btn }
+      </a>
+    )
+  }
+
+  return (
+    <React.Fragment>
+      { btn }
+    </React.Fragment>
+  );
+}
+
+
+interface IButtonProps{
+  label: string,
+  url?: string,
+  type?: 'default' | 'outlined',
+  block?: boolean
+}
