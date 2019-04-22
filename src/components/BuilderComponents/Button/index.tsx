@@ -13,12 +13,12 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
     type: this.props.type || "default"
   }
 
-  public handleChange = (ColField: "label" | "url" | "block" , e: React.ChangeEvent<any>) => {
+  public handleChange = (ColField: "label" | "url" | "block" | "type" , e: React.ChangeEvent<any>) => {
     let value = e.target.value;
     // if checkbox - on
     if(value === "on"){
       value = !this.state.block;
-    }  
+    }
     this.setState({
       ...this.state,
       [ColField]: value
@@ -33,6 +33,7 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
     col.data.label = this.state.label;
     col.data.url = this.state.url;
     col.data.block = this.state.block;
+    col.data.type = this.state.type;
     this.props.updateCol(col);
   }
 
@@ -61,9 +62,9 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
             </Form.Group>
             <Form.Group controlId="ButtonType">
               <Form.Label>Type</Form.Label>
-              <Form.Control as="select">
-                <option>Default</option>
-                <option>Outlined</option>
+              <Form.Control as="select" onChange={this.handleChange.bind(this, 'type')}>
+                <option value="default">Default</option>
+                <option value="outlined">Outlined</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="ButtonFullWidth">
@@ -118,7 +119,7 @@ export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(Button
 export const Button:React.StatelessComponent<IButtonProps> = (props) => {
   
   let btn = (
-    <BButton block={props.block}>
+    <BButton block={props.block} variant={props.type === 'outlined' ? 'outline-primary' : 'primary'}>
       {props.label}
     </BButton>
   );

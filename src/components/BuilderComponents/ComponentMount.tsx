@@ -12,7 +12,7 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       toMountComponent = <Image src={props.data.src} caption={props.data.caption} url={props.data.url} />;
       break;
     case 'button':
-      toMountComponent = <Button label={props.data.label} url={props.data.url} block={props.data.block} />;
+      toMountComponent = <Button label={props.data.label} url={props.data.url} block={props.data.block} type={props.data.type} />;
       break;
     case 'video':
       toMountComponent = <Video src={props.data.src} title={props.data.title} poster={props.data.poster} />;
