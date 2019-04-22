@@ -29,3 +29,12 @@ class VideoForm extends React.Component{
 }
 
 export const VideoControl = VideoForm;
+
+export const Video: React.StatelessComponent<any> = () => {
+  return (
+   <video>
+     <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi" />
+     Browser doesn't support video, please upgrade
+   </video>
+  )
+}
