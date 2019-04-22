@@ -44,6 +44,12 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
         label: 'Submit'
       }
     }
+    if(action.payload === 'video'){
+      data = {
+        src: ''
+      }
+    }
+    
     state = {
       ...state,
       rows:[
