@@ -101,21 +101,4 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export const VideoControl = connect(mapStateToProps, mapDispatchToProps)(VideoForm);
 
-export const Video: React.StatelessComponent<IVideo> = (props: IVideo) => {
-  return (
-   <React.Fragment>
-     <video controls={true} width="100%" poster={require('./placeholder.svg')} title="Hellothere1">
-     <source src={props.src} />
-     Browser doesn't support this video, please upgrade
-   </video>
-   {props.title ? <p>props.title</p> : null }
-   </React.Fragment>
-  )
-}
-
-
-interface IVideo{
-  src: string,
-  title?: string,
-  poster?: string
-}
+export { default as Video} from './video';
