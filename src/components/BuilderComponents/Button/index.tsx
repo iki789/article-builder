@@ -118,7 +118,7 @@ export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(Button
 export const Button:React.StatelessComponent<IButtonProps> = (props) => {
   
   let btn = (
-    <BButton className={props.block ? "Button-block" : ""}>
+    <BButton block={props.block}>
       {props.label}
     </BButton>
   );
