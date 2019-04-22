@@ -1,7 +1,36 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Row, Col, Form, Button } from 'react-bootstrap';
+import { UPDATE_COL } from 'src/containers/Preview/store/actions';
+import { ICol } from 'src/containers/Preview/Preview';
  
-class VideoForm extends React.Component{
+class VideoForm extends React.Component<IVideoControl, IVideoControlState>{
+ 
+  public state: IVideoControlState = {
+    src: this.props.src,
+    title: this.props.title || "",
+    poster: this.props.poster || ""
+  }
+
+  public handleChange = (ColField: 'src' | 'title' | 'poster' , e: React.ChangeEvent<any>) => {
+    const value = e.target.value;
+    this.setState({
+      ...this.state,
+      [ColField]: value
+    }, ()=>{
+      this.updateCol();
+    })
+    return value;
+  }
+
+  public updateCol = () => {
+    const col: ICol = this.props.activeCol;
+    col.data.src = this.state.src;
+    col.data.title = this.state.title;
+    col.data.poster = this.state.poster;
+    this.props.updateCol(col);
+  }
+
   public render() {
     return(
       <React.Fragment>
@@ -9,13 +38,29 @@ class VideoForm extends React.Component{
           <Col>
             <h3>Video</h3>
             <form>
-              <Form.Group>
-                <Form.Label>Video Source Link</Form.Label>
-                <Form.Control type="text" placeholder="https://imgur.com/video.mp4" />
+              <Form.Group controlId="videoSrc">
+                <Form.Label>Source</Form.Label>
+                <Form.Control 
+                  type="text" 
+                  value={this.state.src}
+                  onChange={this.handleChange.bind(this, 'src')}
+                  placeholder="https://imgur.com/video.mp4" />
               </Form.Group>
-              <Form.Group>
-                <Form.Label>Video Title</Form.Label>
-                <Form.Control type="text" placeholder="A beautiful kitten" />
+              <Form.Group controlId="videoSrc">
+                <Form.Label>Title</Form.Label>
+                <Form.Control 
+                  type="text" 
+                  value={this.state.title}
+                  onChange={this.handleChange.bind(this, 'title')}
+                  placeholder="Video Title" />
+              </Form.Group>
+              <Form.Group controlId="vidTitle">
+                <Form.Label>Poster</Form.Label>
+                <Form.Control 
+                  type="text" 
+                  value={this.state.poster}
+                  onChange={this.handleChange.bind(this, 'poster')}
+                  placeholder="https://imgur.com/img.jpg" />
               </Form.Group>
               <Form.Group>
                 <Button>Add Video</Button>
@@ -28,13 +73,49 @@ class VideoForm extends React.Component{
   }
 }
 
-export const VideoControl = VideoForm;
+interface IVideoControl{
+  src: string,
+  title?: string,
+  poster?: string,
+  activeCol: ICol,
+  updateCol: (Col: ICol) => void
+}
 
-export const Video: React.StatelessComponent<any> = () => {
+interface IVideoControlState{
+  src: string,
+  title: string,
+  poster: string
+}
+
+const mapStateToProps = (state: any) => {
+  return {
+    activeCol: state.rootReducer.activeCol
+  }
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    updateCol: (col: ICol) => dispatch(UPDATE_COL(col))
+  }
+}
+
+export const VideoControl = connect(mapStateToProps, mapDispatchToProps)(VideoForm);
+
+export const Video: React.StatelessComponent<IVideo> = (props: IVideo) => {
   return (
-   <video controls={true} width="100%" poster={require('./placeholder.svg')}>
-     <source src="https://static.videezy.com/system/resources/previews/000/010/610/original/4K_UHD_Drone_Portland_Oregon_Cherry_Blossoms_River_Bridge__Fernando.mp4" />
+   <React.Fragment>
+     <video controls={true} width="100%" poster={require('./placeholder.svg')} title="Hellothere1">
+     <source src={props.src} />
      Browser doesn't support this video, please upgrade
    </video>
+   {props.title ? <p>props.title</p> : null }
+   </React.Fragment>
   )
+}
+
+
+interface IVideo{
+  src: string,
+  title?: string,
+  poster?: string
 }
