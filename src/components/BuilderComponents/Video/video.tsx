@@ -6,7 +6,9 @@ class Video extends React.Component<IVideo>{
 
   public componentDidUpdate(prevProps: IVideo){
     if(prevProps.src !== this.props.src){
-      console.log(this.ref);
+      if(this.ref.current){
+        this.ref.current.load();  
+      }
     }
   }
 
