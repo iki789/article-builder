@@ -32,9 +32,9 @@ export const VideoControl = VideoForm;
 
 export const Video: React.StatelessComponent<any> = () => {
   return (
-   <video>
-     <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi" />
-     Browser doesn't support video, please upgrade
+   <video controls={true} width="100%" poster={require('./placeholder.svg')}>
+     <source src="https://static.videezy.com/system/resources/previews/000/010/610/original/4K_UHD_Drone_Portland_Oregon_Cherry_Blossoms_River_Bridge__Fernando.mp4" />
+     Browser doesn't support this video, please upgrade
    </video>
   )
 }
