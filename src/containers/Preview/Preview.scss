@@ -1,6 +1,7 @@
 .Preview{
   p{
     margin-bottom: 0;
+    color: inherit;
   }
   .row{
     margin-bottom: 2rem;
@@ -19,4 +20,9 @@
       border-width: 2px;
     }
   }
-}
+  blockquote{
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-left: 4px solid #333;
+  }
+}  
