@@ -36,7 +36,7 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     }
     if(action.payload === 'image'){
       data = {
-        src: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/28/11/campaign_images/buzzfeed-prod-web-14/28-of-the-most-ridiculously-cute-kittens-of-2016-2-30172-1482941277-0_dblbig.jpg'
+        src: ''
       }
     }
     if(action.payload === 'button'){

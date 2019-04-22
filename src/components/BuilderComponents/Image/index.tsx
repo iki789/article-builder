@@ -127,7 +127,7 @@ export const ImageForm = connect(mapStateToProps, mapDispatchToProps)(ImageContr
 export const Image: React.StatelessComponent<IImageProps> = (props:IImageProps) => {
   let img = (
     <React.Fragment>
-      <img src={props.src} />
+      <img src={props.src ? props.src : require('./placeholder.svg')} />
       {props.caption ? <p>{props.caption}</p> : null}
     </React.Fragment>
   ) ;
