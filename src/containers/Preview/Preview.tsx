@@ -23,7 +23,7 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
       color: `${settings.fonts.color}`
     }
     return (
-      <div style={styles}>
+      <div style={styles} className="Preview">
         {
           this.props.state.rows.map((row, i)=>{
             return (
