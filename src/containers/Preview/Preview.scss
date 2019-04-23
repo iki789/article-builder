@@ -1,4 +1,8 @@
 .Preview{
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  max-height: 100vh;
   p{
     margin-bottom: 0;
     color: inherit;
