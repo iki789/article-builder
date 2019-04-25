@@ -3,12 +3,14 @@
   overflow-y: scroll;
   scrollbar-width: none;
   max-height: 100vh;
+  h1, h2, h3, h4, h5, h6, blockquote, button, .btn{font-size: 1em;}
   h1{
-    font-size: 3.5rem;
+    font-size: 3.5em;
   }
   p{
     margin-bottom: 0;
     color: inherit;
+    font-size: 1.2em;
   }
   .row{
     margin-bottom: 2rem;
@@ -19,6 +21,7 @@
   .btn{
     border-radius: 4px;
     font-weight: 600;
+    font-size: 1em;
     &.btn-block{
       padding: 1rem;
       font-size: 1.2rem;
