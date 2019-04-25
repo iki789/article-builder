@@ -1,24 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
+import { UPDATE_FONTS } from '../../../containers/Preview/store/actions'
 
-class Fonts extends React.Component<IFontsProps, IFontsState>{
-  public state:IFontsState = {
+class Fonts extends React.Component<IFontsProps, IFonts>{
+  public state:IFonts = {
     family: this.props.fonts.family || "Times New Roman",
     size: this.props.fonts.size || 1
   }
 
-  public handleChange = (field: "family" | "size",e: React.ChangeEvent<any>) => {
+  public handleChange = (field: "family" | "size", e: React.ChangeEvent<any>) => {
     const val = e.target.value;
     this.setState({
       ...this.state,
       [field]: val
+    }, () => {
+      this.storeFonts();
     });
     return val;
   }
 
   public storeFonts = () => {
-    // sdasd
+    this.props.updateFonts(this.state);
   }
 
   public render(){
@@ -50,10 +53,11 @@ class Fonts extends React.Component<IFontsProps, IFontsState>{
 interface IFontsProps{
   family?: string,
   size?: number,
-  fonts: IFontsProps
+  fonts: IFonts,
+  updateFonts: (fonts: IFonts) => void
 }
 
-interface IFontsState{
+export interface IFonts{
   family?: string,
   size?: number
 }
@@ -64,4 +68,10 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps)(Fonts);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    updateFonts: (fonts: IFonts) => dispatch(UPDATE_FONTS(fonts))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Fonts);
