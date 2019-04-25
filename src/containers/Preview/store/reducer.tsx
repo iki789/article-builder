@@ -7,7 +7,7 @@ const initialState: IPreviewState = {
   settings:{
     fonts:{
       color: '#333',
-      family:'asd',
+      family:'Roboto',
       size: 1.2
     },
     margins:{
@@ -73,6 +73,16 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
       ...state,
       rows  
     };
+  }
+
+  if(action.type === ActionTypes.UPDATE_FONTS){
+    state = {
+      ...state,
+      settings:{
+        ...state.settings,
+        fonts: action.payload
+      }
+    }
   }
 
   return state;
