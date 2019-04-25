@@ -85,5 +85,15 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     }
   }
 
+  if(action.type === ActionTypes.UPDATE_MARGINS){
+    state = {
+      ...state,
+      settings:{
+        ...state.settings,
+        margins: action.payload
+      }
+    }
+  }
+
   return state;
 }
