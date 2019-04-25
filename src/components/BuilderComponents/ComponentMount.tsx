@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { TextEditor, Video, Image, Button } from './index';
+import { ICol } from 'src/containers/Preview/Preview';
 
-const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
+const ComponentMount: React.StatelessComponent<IComponentMount> = (props: IComponentMount) => {
   let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
   
   switch(props.type){
@@ -24,6 +26,7 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
         </div>
       )
   }
+  // const isActive:boolean = props.activeCol && props.activeCol.id === props.colId; 
   return (
     <div>
       { toMountComponent }
@@ -31,4 +34,17 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
   );
 }
 
-export default ComponentMount;
+interface IComponentMount{
+  type?: string, 
+  data?: React.ReactElement | any,
+  colId?: number,
+  activeCol: ICol
+}
+
+const mapPropsToState = (state: any) => {
+  return {
+    activeCol: state.rootReducer.activeCol
+  }
+}
+
+export default connect(mapPropsToState)(ComponentMount);
