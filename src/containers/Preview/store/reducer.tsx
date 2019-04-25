@@ -8,7 +8,7 @@ const initialState: IPreviewState = {
     fonts:{
       color: '#333',
       family:'Roboto',
-      size: 1.2
+      size: 1
     },
     margins:{
       bottom: 1.2,
