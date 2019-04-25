@@ -31,7 +31,7 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
               {row.cols.map(col=>{
                 return (
                 <Col key={col.id}  onClick={this.props.onSelect.bind(this, col)}>
-                  <ComponentMount type={col.type} data={col.data} />
+                  <ComponentMount colId={col.id} type={col.type} data={col.data} />
                 </Col>
                 )
               })}

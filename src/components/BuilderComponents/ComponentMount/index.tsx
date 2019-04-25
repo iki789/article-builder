@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextEditor, Video, Image, Button } from './index';
+import { TextEditor, Video, Image, Button } from '../index';
 import { ICol } from 'src/containers/Preview/Preview';
 
 const ComponentMount: React.StatelessComponent<IComponentMount> = (props: IComponentMount) => {
