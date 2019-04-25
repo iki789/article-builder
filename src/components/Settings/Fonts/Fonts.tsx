@@ -30,8 +30,11 @@ class Fonts extends React.Component<IFontsProps, IFonts>{
         <Form.Group controlId="Fonts" style={{maxWidth: "170px", width: "100%", marginRight: "1rem"}}>
           <Form.Label>Fonts</Form.Label>
           <Form.Control as="select" value={this.state.family} onChange={this.handleChange.bind(this, 'family')}>
-            <option value="Roboto">Roboto</option>
-            <option value="Times New Roman">Times New Roman</option>
+            {
+              FontFamilies.map(font=>{
+                return <option key={font} value={font}>{font}</option>
+              })
+            }
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="Size" style={{maxWidth: "100px"}}>
@@ -75,3 +78,39 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Fonts);
+
+const FontFamilies:any[] = [
+  'Aleo',
+  'Averia Serif Libre',
+  'Bree Serif',
+  'Cookie',
+  'Fenix',
+  'IBM Plex Serif',
+  'Lato',
+  'Lora',
+  'Lustria',
+  'Maven Pro',
+  'Merriweather',
+  'Noto Serif KR',
+  'Noto Serif SC',
+  'Nunito Sans',
+  'Nunito',
+  'Old Standard TT',
+  'Open Sans',
+  'Orbitron',
+  'Poppins',
+  'PT Serif',
+  'PT Serif Caption',
+  'Rajdhani',
+  'Raleway',
+  'Roboto',
+  'Roboto Condensed',
+  'Roboto Slab',
+  'Rokkitt',
+  'Source Sans Pro',
+  'Source Serif Pro',
+  'Teko',
+  'Ubuntu',
+  'Ubuntu Condensed',
+  'Ubuntu Mono'
+]
