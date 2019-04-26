@@ -64,7 +64,7 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     const rows:IRow[] = [...state.rows];
     rows.map((row:IRow) => {
       row.cols.map((col:ICol)=>{
-        if(col.id === action.payload.id) {col.data = action.payload.data;}
+        if((col && action.payload) && col.id === action.payload.id) {col.data = action.payload.data;}
         return col;
       })
       return row;
