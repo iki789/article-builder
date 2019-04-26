@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { TextEditor, Video, Image, Button } from '../index';
 import { ICol } from 'src/containers/Preview/Preview';
+import './ComponentMount.scss';
 
 const ComponentMount: React.StatelessComponent<IComponentMount> = (props: IComponentMount) => {
   let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
@@ -26,9 +27,13 @@ const ComponentMount: React.StatelessComponent<IComponentMount> = (props: ICompo
         </div>
       )
   }
-  // const isActive:boolean = props.activeCol && props.activeCol.id === props.colId; 
+  const isActive:boolean = props.activeCol && props.activeCol.id === props.colId; 
+  const classes: string[] = ['ComponentMount'];
+  if(isActive){
+    classes.push('active');
+  }
   return (
-    <div>
+    <div className={classes.join(' ')}>
       { toMountComponent }
     </div>
   );
