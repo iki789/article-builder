@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { TextEditor, Video, Image, Button } from '../index';
 import { ICol } from 'src/containers/Preview/Preview';
+import { ACTIVATE_COL, UNSET_COL } from '../../../store/actions/app';
 import './ComponentMount.scss';
 
-const ComponentMount: React.StatelessComponent<IComponentMount> = (props: IComponentMount) => {
+const ComponentMount: React.StatelessComponent<IComponentMountProps> = (props: IComponentMountProps) => {
   let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
   
   switch(props.type){
@@ -32,24 +33,46 @@ const ComponentMount: React.StatelessComponent<IComponentMount> = (props: ICompo
   if(isActive){
     classes.push('active');
   }
+  const handleClick = () => {
+    if(isActive){
+      props.deactivateCol();
+    }else{
+      const col: ICol = {
+        id: props.colId || 0,
+        type: props.type || 'text',
+        data: props.data || null
+      };
+      props.activateCol(col)
+    }
+  }
   return (
-    <div className={classes.join(' ')}>
+    <div className={classes.join(' ')} onClick={handleClick}>
       { toMountComponent }
     </div>
   );
 }
 
-interface IComponentMount{
+interface IComponentMountProps{
   type?: string, 
   data?: React.ReactElement | any,
   colId?: number,
-  activeCol: ICol
+  activeCol: ICol,
+  deactivateCol: () => void,
+  activateCol: (col: ICol) => void
 }
 
-const mapPropsToState = (state: any) => {
+const mapStateToProps = (state: any) => {
   return {
     activeCol: state.rootReducer.activeCol
   }
 }
 
-export default connect(mapPropsToState)(ComponentMount);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    deactivateCol: () => dispatch(UNSET_COL()),
+    activateCol: (payload: ICol) => dispatch(ACTIVATE_COL(payload))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentMount);

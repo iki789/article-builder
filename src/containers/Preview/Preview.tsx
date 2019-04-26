@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
-import { ACTIVATE_COL } from '../../store/actions/app'
 import './Preview.scss';
 import { ComponentMount } from '../../components/BuilderComponents'
 
 class Preview extends React.Component<IPreviewProps, IPreviewState> {
-
-  public onSelect = (col: ICol) => {
-    this.props.onSelect(col);
-  }
 
   public render() {
     const settings = this.props.state.settings;
@@ -30,7 +25,7 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
             <Row key={i}>
               {row.cols.map(col=>{
                 return (
-                <Col key={col.id}  onClick={this.props.onSelect.bind(this, col)}>
+                <Col key={col.id}>
                   <ComponentMount colId={col.id} type={col.type} data={col.data} />
                 </Col>
                 )
@@ -50,14 +45,7 @@ const mapStateToProps = (state:any) =>  {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) =>  {
-  return {
-    onSelect: (payload: ICol) => dispatch(ACTIVATE_COL(payload))
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Preview);
+export default connect(mapStateToProps)(Preview);
 
 export interface IPreviewState{
   settings:{
@@ -79,8 +67,7 @@ export interface IPreviewState{
 }
 
 export interface IPreviewProps{
-  state: IPreviewState,
-  onSelect: (payload: ICol) => void
+  state: IPreviewState
 }
 
 export interface IRow{
