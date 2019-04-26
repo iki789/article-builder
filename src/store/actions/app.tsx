@@ -24,3 +24,9 @@ export const UPDATE_COL = (data: ICol) => {
     type: actionTypes.UPDATE_COL, payload: data
   }
 }
+
+export const UNSET_COL = () => {
+  return {
+    type: actionTypes.UPDATE_COL
+  }
+}
