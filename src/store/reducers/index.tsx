@@ -34,6 +34,13 @@ const Reducer = (state: IAppState = initialState, action:{type: string, payload:
     }
   }
 
+  if(action.type === ActionTypes.UNSET_COL){
+    state = {
+      ...state,
+      activeCol: undefined
+    }
+  }
+
   return state;
 }
 
