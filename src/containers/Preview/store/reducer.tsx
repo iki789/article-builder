@@ -96,11 +96,12 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
   }
 
   if(action.type === ActionTypes.REMOVE_COL){
-    const rows: IRow[] = [...state.rows];
-    rows.map((row: IRow) => {
+    let rows: IRow[] = [...state.rows];
+    rows = rows.filter((row: IRow) => {
       row.cols = row.cols.filter((col: ICol)=>{
         return col.id !== action.payload.id
       })
+      return row.cols.length > 0 ? true : false ;
     })
 
     state = {
