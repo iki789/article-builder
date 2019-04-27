@@ -99,7 +99,7 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     const rows: IRow[] = [...state.rows];
     rows.map((row: IRow) => {
       row.cols = row.cols.filter((col: ICol)=>{
-        return col.id !== action.payload
+        return col.id !== action.payload.id
       })
     })
 
