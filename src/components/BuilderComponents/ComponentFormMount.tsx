@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { TextEditor, ImageForm, VideoControl, ButtonControl } from './index';
+import { ICol } from 'src/containers/Preview/Preview';
 
 const ComponentMount = (props:IComponentFormMoutProps) => {
   let toMountComponent: any ;
@@ -39,7 +40,7 @@ const ComponentMount = (props:IComponentFormMoutProps) => {
 
 interface IComponentFormMoutProps{
   type?: string, 
-  data?: React.ReactElement | any,
+  data?: React.ReactElement | any
 }
 
 export default connect()(ComponentMount);
