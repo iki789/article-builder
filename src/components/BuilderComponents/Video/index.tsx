@@ -62,9 +62,6 @@ class VideoForm extends React.Component<IVideoControl, IVideoControlState>{
                   onChange={this.handleChange.bind(this, 'poster')}
                   placeholder="https://imgur.com/img.jpg" />
               </Form.Group>
-              <Form.Group>
-                <Button>Add Video</Button>
-              </Form.Group>
             </form>
           </Col>
         </Row>

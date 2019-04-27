@@ -79,9 +79,6 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
                   placeholder={this.props.url} 
                   value={this.state.url} onChange={this.handleUrlChange} />
               </Form.Group>
-              <Form.Group>
-                <Button>Add Image</Button>
-              </Form.Group>
             </form>
           </Col>
         </Row>

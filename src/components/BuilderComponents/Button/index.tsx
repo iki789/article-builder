@@ -75,9 +75,6 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
                 checked={this.state.block ? true : false}
                 label="Button is full-width" />
             </Form.Group>
-            <Form.Group>
-              <BButton>Create</BButton>
-            </Form.Group>
           </form>
         </Col>
       </Row>
