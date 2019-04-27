@@ -95,5 +95,20 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     }
   }
 
+  if(action.type === ActionTypes.REMOVE_COL){
+    const rows: IRow[] = [...state.rows];
+    rows.map((row: IRow) => {
+      row.cols = row.cols.filter((col: ICol)=>{
+        return col.id !== action.payload
+      })
+    })
+
+    state = {
+      ...state,
+      rows
+    }
+
+  }
+
   return state;
 }
