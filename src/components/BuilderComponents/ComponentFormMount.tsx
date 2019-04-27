@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { UNSET_COL } from '../../store/actions/app';
+import { REMOVE_COL } from '../../containers/Preview/store/actions';
 import { TextEditor, ImageForm, VideoControl, ButtonControl } from './index';
 import { ICol } from 'src/containers/Preview/Preview';
 
@@ -25,7 +27,7 @@ const ComponentMount = (props:IComponentFormMoutProps) => {
   const handleRemove = () => {
     const remove:boolean = confirm("Are you sure you want to remove this component?");
     if(remove){
-      // Do something
+      props.removeCol(props.activeCol.id);
     }
   }
 
@@ -40,7 +42,24 @@ const ComponentMount = (props:IComponentFormMoutProps) => {
 
 interface IComponentFormMoutProps{
   type?: string, 
-  data?: React.ReactElement | any
+  data?: React.ReactElement | any,
+  removeCol: (id: number) => void,
+  activeCol: ICol
 }
 
-export default connect()(ComponentMount);
+const mapStateToProps = (state: any) => {
+  return {
+    activeCol: state.rootReducer.activeCol
+  }
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    removeCol: (id: number) => {
+      dispatch(UNSET_COL());
+      dispatch(REMOVE_COL(id));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentMount);
