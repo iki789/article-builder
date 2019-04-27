@@ -3,7 +3,6 @@ import { TextEditor, ImageForm, VideoControl, ButtonControl } from './index';
 
 const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
   let toMountComponent: any ;
-  
   switch(props.type){
     case 'text':
       toMountComponent = <TextEditor value={props.data} />;
@@ -20,11 +19,19 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
     default:
       toMountComponent = null
   }
+  
+  const handleRemove = () => {
+    const remove:boolean = confirm("Are you sure you want to remove this component?");
+    if(remove){
+      // Do something
+    }
+  }
+
   return (
     <div>
-      { toMountComponent ? toMountComponent : <div style={{textAlign: 'center'}}>Select a Component to edit</div> }
+      { toMountComponent ? toMountComponent : <div style={{textAlign: 'center'}}>Select a component to edit</div> }
       {/* Remove button */}
-      { toMountComponent ? <div className="form-group mt-1"><button className="btn btn-sm btn-primary">Remove</button></div> : null }
+      { toMountComponent ? <div className="form-group mt-1"><button onClick={handleRemove} className="btn btn-sm btn-primary">Remove</button></div> : null }
     </div>
   );
 }
