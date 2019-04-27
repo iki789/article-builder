@@ -1,5 +1,6 @@
 @import './variables'; 
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/buttons';
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
   color: $primary;
@@ -9,6 +10,14 @@ label{
   color: $primary-color;
 }
 
+.btn-primary {
+  @include button-variant($light-blue, $light-blue, darken($light-blue, 10%), lighten($light-blue,5%), lighten($light-blue, 10%), darken($light-blue,30%));
+  color: #fff;
+  &:hover{
+    color: #fff;
+  }
+}
+// background, border-color, hover:background-color, hover:background-color, active:background-color, active:background-color  
 select{
   appearance: none;
   background-image: url("./assets/icons/dropdown.svg");
