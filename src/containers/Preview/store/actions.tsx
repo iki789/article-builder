@@ -30,3 +30,10 @@ export const UPDATE_MARGINS = (margins: IMargins ) => {
     payload: margins
   }
 }
+
+export const REMOVE_COL = (id: number) => {
+  return {
+    type: ActionTypes.REMOVE_COL,
+    payload: id
+  }
+}
