@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { TextEditor, ImageForm, VideoControl, ButtonControl } from './index';
 
-const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
+const ComponentMount = (props:IComponentFormMoutProps) => {
   let toMountComponent: any ;
   switch(props.type){
     case 'text':
@@ -36,4 +37,9 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
   );
 }
 
-export default ComponentMount;
+interface IComponentFormMoutProps{
+  type?: string, 
+  data?: React.ReactElement | any,
+}
+
+export default connect()(ComponentMount);
