@@ -2,7 +2,7 @@ import React from 'react';
 import { TextEditor, ImageForm, VideoControl, ButtonControl } from './index';
 
 const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) => {
-  let toMountComponent = <TextEditor value={<div>Write something here</div>} />;
+  let toMountComponent: any ;
   
   switch(props.type){
     case 'text':
@@ -18,15 +18,13 @@ const ComponentMount = (props:{type?: string, data?: React.ReactElement | any}) 
       toMountComponent = <ButtonControl label={props.data.label} url={props.data.url} block={props.data.block} />;
       break;
     default:
-      toMountComponent = (
-        <div style={{textAlign: 'center'}}>
-          Select a Component to edit
-        </div>
-      )
+      toMountComponent = null
   }
   return (
     <div>
-      { toMountComponent }
+      { toMountComponent ? toMountComponent : <div style={{textAlign: 'center'}}>Select a Component to edit</div> }
+      {/* Remove button */}
+      { toMountComponent ? <div className="form-group mt-1"><button className="btn btn-sm btn-primary">Remove</button></div> : null }
     </div>
   );
 }
