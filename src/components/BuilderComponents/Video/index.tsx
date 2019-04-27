@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 import { UPDATE_COL } from 'src/containers/Preview/store/actions';
 import { ICol } from 'src/containers/Preview/Preview';
  

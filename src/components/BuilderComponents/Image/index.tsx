@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import './Image.scss';
 import { ICol } from 'src/containers/Preview/Preview';

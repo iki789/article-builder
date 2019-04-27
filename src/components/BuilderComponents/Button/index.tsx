@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { UPDATE_COL } from '../../../containers/Preview/store/actions'
-import { Row, Col, Form, Button as BButton } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 import { ICol } from 'src/containers/Preview/Preview';
 
 export class ButtonForm extends React.Component<IButtonControlProps, IButtonState>{
