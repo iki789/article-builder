@@ -12,13 +12,13 @@ const ComponentMount = (props:IComponentFormMoutProps) => {
       toMountComponent = <TextEditor value={props.data} />;
       break;
     case 'image':
-      toMountComponent = <ImageForm src={props.data.src} />;
+      toMountComponent = <ImageForm src={props.data.src} caption={props.data.caption} url={props.data.url} />;
       break;
     case 'video':
-      toMountComponent = <VideoControl src={props.data.src} />;
+      toMountComponent = <VideoControl src={props.data.src} title={props.data.title}  poster={props.data.poster} />;
       break;
     case 'button':
-      toMountComponent = <ButtonControl label={props.data.label} url={props.data.url} block={props.data.block} />;
+      toMountComponent = <ButtonControl label={props.data.label} url={props.data.url} type={props.data.type} block={props.data.block} />;
       break;
     default:
       toMountComponent = null
