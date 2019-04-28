@@ -62,7 +62,7 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
             </Form.Group>
             <Form.Group controlId="ButtonType">
               <Form.Label>Type</Form.Label>
-              <Form.Control as="select" onChange={this.handleChange.bind(this, 'type')}>
+              <Form.Control as="select" onChange={this.handleChange.bind(this, 'type')} value={this.state.type}>
                 <option value="default">Default</option>
                 <option value="outlined">Outlined</option>
               </Form.Control>
