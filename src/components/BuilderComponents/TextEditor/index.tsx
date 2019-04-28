@@ -34,7 +34,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onUpdate: (col: ICol) => dispatch(UPDATE_COL(col))
+    onUpdate: (col: ICol) => dispatch(UPDATE_COL({...col}))
   }
 }
 

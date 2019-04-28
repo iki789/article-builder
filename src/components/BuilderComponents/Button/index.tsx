@@ -107,7 +107,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateCol: (col:ICol) => dispatch(UPDATE_COL(col))
+    updateCol: (col:ICol) => dispatch(UPDATE_COL({...col}))
   }
 }
 
