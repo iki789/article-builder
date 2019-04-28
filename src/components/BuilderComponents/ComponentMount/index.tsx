@@ -31,11 +31,11 @@ const ComponentMount: React.StatelessComponent<IComponentMountProps> = (props: I
   const isActive:boolean = props.activeCol && props.activeCol.id === props.colId; 
   const classes: string[] = ['ComponentMount'];
   if(isActive){
-    classes.push('active');
+    // classes.push('active');
   }
   const handleClick = () => {
     if(isActive){
-      props.deactivateCol();
+      // props.deactivateCol();
     }else{
       const col: ICol = {
         id: props.colId || 0,
