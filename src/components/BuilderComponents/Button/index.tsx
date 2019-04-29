@@ -113,7 +113,7 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(ButtonForm);
 
-export const Button:React.StatelessComponent<IButtonProps> = (props) => {
+const Button:React.StatelessComponent<IButtonProps> = (props) => {
   
   let btn = (
     <BButton block={props.block} variant={props.type === 'outlined' ? 'outline-primary' : 'primary'}>
@@ -145,5 +145,16 @@ interface IButtonProps{
   label: string,
   url?: string,
   type?: 'default' | 'outlined',
-  block?: boolean
+  block?: boolean,
+  theme: string
 }
+
+const mapButtonStateToProps = (state: any) => {
+  return{
+    theme: state.PreviewReducer.settings.theme
+  }
+}
+
+const ButtonConnected = connect(mapButtonStateToProps)(Button);
+
+export { ButtonConnected as Button } ;
