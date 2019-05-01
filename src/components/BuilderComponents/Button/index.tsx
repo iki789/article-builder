@@ -115,8 +115,7 @@ export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(Button
 
 const Button:React.StatelessComponent<IButtonProps> = (props: IButtonProps) => {
   const classes:string[] = [
-    'btn',
-    'btn-primary'
+    'btn'
   ];
 
   if(props.block){
@@ -126,9 +125,6 @@ const Button:React.StatelessComponent<IButtonProps> = (props: IButtonProps) => {
     classes.push('btn-primary');
   }
   if(props.type === 'outlined'){
-    // Remove default btn class
-    const index = classes.indexOf('btn-primary');
-    if (index !== -1) {classes.splice(index, 1)};
     classes.push('btn-outline-primary');
   }
 
