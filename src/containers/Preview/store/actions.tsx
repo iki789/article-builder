@@ -37,3 +37,10 @@ export const REMOVE_COL = (id: number) => {
     payload: { id }
   }
 }
+
+export const UPDATE_THEME = (color: string) => {
+  return {
+    type: ActionTypes.UPDATE_THEME,
+    payload: { color }
+  }
+}

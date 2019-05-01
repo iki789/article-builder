@@ -3,3 +3,4 @@ export const UPDATE_COL = "UPDATE_COL";
 export const UPDATE_FONTS = "UPDATE_FONTS";
 export const UPDATE_MARGINS = "UPDATE_MARGINS";
 export const REMOVE_COL = "REMOVE_COL";
+export const UPDATE_THEME = "UPDATE_THEME";
