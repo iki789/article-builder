@@ -109,7 +109,17 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
       ...state,
       rows
     }
-
   }
+
+  if(action.type === ActionTypes.UPDATE_THEME){
+    state = {
+      ...state,
+      settings:{
+        ...state.settings,
+        theme: action.payload.color
+      }
+    }
+  }
+
   return state;
 }
