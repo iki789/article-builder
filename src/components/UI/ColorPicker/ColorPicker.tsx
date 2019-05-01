@@ -1,24 +1,32 @@
-import * as React from 'react';
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { UPDATE_THEME } from '../../../containers/Preview/store/actions';
 import './ColorPicker.scss';
 import { BlockPicker } from 'react-color';
 
-interface IColorInputPicker{
+interface IColorInputPickerProps{
+  color: string,
+  onChange?: string,
+  showColorPicker: boolean,
+  onThemeColorChange: (color: string) => void
+}
+
+interface IColorInputPickerState{
   color: string,
   onChange?: string,
   showColorPicker: boolean
 }
 
-class ColorInputPicker extends React.Component<IColorInputPicker>{
+class ColorInputPicker extends React.Component<IColorInputPickerProps, IColorInputPickerState>{
 
   public wrapperRef: React.RefObject<any>;
   // public wrapperRef: any;
-  public state:IColorInputPicker = {
+  public state:IColorInputPickerState = {
     color: 'orangered',
     showColorPicker: false
   }
 
-  public constructor(props: IColorInputPicker){
+  public constructor(props: IColorInputPickerProps){
     super(props);
   }
 
@@ -42,6 +50,8 @@ class ColorInputPicker extends React.Component<IColorInputPicker>{
     this.setState({
       ...this.state,
       color: e.hex
+    }, () => {
+      this.props.onThemeColorChange(this.state.color);
     });
     return e.hex;
   }
@@ -82,7 +92,12 @@ class ColorInputPicker extends React.Component<IColorInputPicker>{
       })
     }
   }
-
 }
 
-export default ColorInputPicker;
+const mapDispatchToProps = (dispatch:any) => {
+  return {
+    onThemeColorChange: (color: string) => dispatch(UPDATE_THEME(color))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ColorInputPicker);
