@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Radium from 'radium';
+import color from 'color';
 import { UPDATE_COL } from '../../../containers/Preview/store/actions'
 import { Row, Col, Form } from 'react-bootstrap';
 import { ICol } from 'src/containers/Preview/Preview';
@@ -128,8 +130,22 @@ const Button:React.StatelessComponent<IButtonProps> = (props: IButtonProps) => {
     classes.push('btn-outline-primary');
   }
 
+  const styles = {
+    base: {
+      backgroundColor: props.type === 'default' ? props.theme : 'transparent',
+      borderColor: props.theme,
+      color: props.type === 'outlined' ? props.theme : '#fff',
+      ':hover':{
+        boxShadow: `0 0 0 0.2rem ${color(props.theme).lighten(0.5).hex()}`
+      },
+      ':focus':{
+        boxShadow: `0 0 0 0.2rem ${color(props.theme).lighten(0.5).hex()}`
+      }
+    }
+  }
+
   let btn = (
-    <button className={classes.join(' ')}>
+    <button className={classes.join(' ')} style={styles.base}>
       {props.label}
     </button>
   );
@@ -167,6 +183,6 @@ const mapButtonStateToProps = (state: any) => {
   }
 }
 
-const ButtonConnected = connect(mapButtonStateToProps)(Button);
+const ButtonConnected = connect(mapButtonStateToProps)(Radium(Button));
 
 export { ButtonConnected as Button } ;
