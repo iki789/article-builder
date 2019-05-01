@@ -16,7 +16,7 @@ const initialState: IPreviewState = {
       right: 1,
       top: 1
     },
-    theme: 'string'
+    theme: 'red'
   },
   rows:[
     {
@@ -41,7 +41,8 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     }
     if(action.payload === 'button'){
       data = {
-        label: 'Submit'
+        label: 'Submit',
+        type: 'default'
       }
     }
     if(action.payload === 'video'){
@@ -110,6 +111,5 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     }
 
   }
-
   return state;
 }
