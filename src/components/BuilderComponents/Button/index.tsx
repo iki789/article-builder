@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { UPDATE_COL } from '../../../containers/Preview/store/actions'
-import { Row, Col, Form, Button as BButton } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 import { ICol } from 'src/containers/Preview/Preview';
 
 export class ButtonForm extends React.Component<IButtonControlProps, IButtonState>{
@@ -113,12 +113,29 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export const ButtonControl = connect(mapStateToProps, mapDispatchToProps)(ButtonForm);
 
-const Button:React.StatelessComponent<IButtonProps> = (props) => {
-  
+const Button:React.StatelessComponent<IButtonProps> = (props: IButtonProps) => {
+  const classes:string[] = [
+    'btn',
+    'btn-primary'
+  ];
+
+  if(props.block){
+    classes.push('btn-block');
+  }
+  if(props.type === 'default'){
+    classes.push('btn-primary');
+  }
+  if(props.type === 'outlined'){
+    // Remove default btn class
+    const index = classes.indexOf('btn-primary');
+    if (index !== -1) {classes.splice(index, 1)};
+    classes.push('btn-outline-primary');
+  }
+
   let btn = (
-    <BButton block={props.block} variant={props.type === 'outlined' ? 'outline-primary' : 'primary'}>
+    <button className={classes.join(' ')}>
       {props.label}
-    </BButton>
+    </button>
   );
 
   if(props.url){
@@ -127,7 +144,7 @@ const Button:React.StatelessComponent<IButtonProps> = (props) => {
       return false;
     }
     btn = (
-      <a href={props.url} onClick={preventUrlRedirect}>
+      <a href={props.url} onClick={preventUrlRedirect} >
         { btn }
       </a>
     )
@@ -139,7 +156,6 @@ const Button:React.StatelessComponent<IButtonProps> = (props) => {
     </React.Fragment>
   );
 }
-
 
 interface IButtonProps{
   label: string,
