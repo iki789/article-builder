@@ -18,21 +18,15 @@ const initialState: IPreviewState = {
     },
     theme: '#2699FB'
   },
-  rows:[
-    {
-      cols:[
-        {id: 0, type: 'text', data:'<h1>Hello World</h1>'}
-      ]
-    }
-  ],
+  rows:[],
   colCount: 0
 }
 
 export const PreviewReducer:Reducer = (state:IPreviewState = initialState, action) => {
   if(action.type === ActionTypes.ADD_ITEM_TO_ROW){
-    let data:any = "Hello world";
+    let data:any = "";
     if(action.payload === 'text'){
-      data = "Hello World";
+      data = "<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Etiam suscipit sollicitudin libero, sit amet ullamcorper orci pretium quis. Aenean ornare finibus lectus in elementum. Quisque eget vehicula est. Integer nec tellus egestas, bibendum sem auctor, fermentum enim. Sed ac massa vehicula lorem malesuada porttitor.  fermentum enim. Sed ac massa vehicula lorem malesuada porttitor.</p>";
     }
     if(action.payload === 'image'){
       data = {
