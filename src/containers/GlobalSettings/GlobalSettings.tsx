@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Row, Col, FormLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { ColorResult } from 'react-color'
-import { UPDATE_THEME } from '../Preview/store/actions';
+import { UPDATE_MARGINS, UPDATE_THEME } from '../Preview/store/actions';
 import './GlobalSettings.scss';
 import FontSettings from '../../components/Settings/Fonts/Fonts';
-import MarginSettings from '../../components/Settings/Margins/Margins';
+import MarginSettings, { IMargins } from '../../components/Settings/Margins/Margins';
 import ColorPicker from '../../components/UI/ColorPicker/ColorPicker';
 import ToggleButton from '../../components/UI/ToggleButton/ToggleButton';
 import { ISettings } from '../Preview/Preview';
@@ -15,8 +15,9 @@ interface IGlobalSettingsState{
 }
 
 interface IGlobalSettingsProps{
+  settings: ISettings,
+  onMarginsChange: (margins: IMargins) => void,
   onThemeColorChange: (color: string) => void,
-  settings: ISettings
 }
 
 class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettingsState>{
@@ -36,6 +37,11 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
     this.props.onThemeColorChange(color.hex);
   }
 
+  public handleMarginsChange = (margins: IMargins) => {
+    this.props.onMarginsChange(margins);
+    return margins;
+  }
+
   public render(){
     const settingComponents = (
     <div>
@@ -46,7 +52,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
         </Row>
         <Row>
           <Col className="mb-4" >
-            <MarginSettings />
+            <MarginSettings margins={this.props.settings.margins} onChange={this.handleMarginsChange} />
           </Col>
         </Row>
         <Row>
@@ -76,6 +82,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch:any) => {
   return {
+    onMarginsChange: (margins: IMargins) => dispatch(UPDATE_MARGINS(margins)),
     onThemeColorChange: (color: string) => dispatch(UPDATE_THEME(color))
   }
 }
