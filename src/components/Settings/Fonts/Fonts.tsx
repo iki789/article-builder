@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
-import { UPDATE_FONTS } from '../../../containers/Preview/store/actions'
 
 class Fonts extends React.Component<IFontsProps, IFonts>{
   public state:IFonts = {
-    family: this.props.fonts.family || "Times New Roman",
+    family: this.props.fonts.family || "Roboto",
     size: this.props.fonts.size || 1
   }
 
@@ -15,13 +13,11 @@ class Fonts extends React.Component<IFontsProps, IFonts>{
       ...this.state,
       [field]: val
     }, () => {
-      this.storeFonts();
+      if(this.props.onChange){
+        this.props.onChange(this.state);
+      }
     });
     return val;
-  }
-
-  public storeFonts = () => {
-    this.props.updateFonts(this.state);
   }
 
   public render(){
@@ -57,7 +53,7 @@ interface IFontsProps{
   family?: string,
   size?: number,
   fonts: IFonts,
-  updateFonts: (fonts: IFonts) => void
+  onChange?: (fonts: IFonts) => void
 }
 
 export interface IFonts{
@@ -65,19 +61,7 @@ export interface IFonts{
   size?: number
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    fonts: state.PreviewReducer.settings.fonts
-  }
-}
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    updateFonts: (fonts: IFonts) => dispatch(UPDATE_FONTS(fonts))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Fonts);
+export default Fonts;
 
 const FontFamilies:any[] = [
   'Aleo',
