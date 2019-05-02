@@ -1,25 +1,25 @@
 import * as React from 'react';
 
 import './ColorPicker.scss';
-import { BlockPicker } from 'react-color';
+import { BlockPicker, ColorResult } from 'react-color';
 
-interface IColorInputPicker{
+interface IColorInputPickerProps{
   color: string,
-  onChange?: string,
+  onChange: (e?:ColorResult) => void,
   showColorPicker: boolean
 }
 
-class ColorInputPicker extends React.Component<IColorInputPicker>{
+interface IColorInputPickerState{
+  color: string,
+  showColorPicker: boolean
+}
+
+class ColorInputPicker extends React.Component<IColorInputPickerProps, IColorInputPickerState>{
 
   public wrapperRef: React.RefObject<any>;
-  // public wrapperRef: any;
-  public state:IColorInputPicker = {
+  public state:IColorInputPickerState = {
     color: 'orangered',
     showColorPicker: false
-  }
-
-  public constructor(props: IColorInputPicker){
-    super(props);
   }
 
   public componentDidMount(){
@@ -30,7 +30,6 @@ class ColorInputPicker extends React.Component<IColorInputPicker>{
     });
     document.addEventListener('mousedown', this.handleClickOutComponent);
     this.wrapperRef = React.createRef();
-    console.log(this.wrapperRef)
   }
 
   public componentWillUnmount(){
@@ -38,10 +37,12 @@ class ColorInputPicker extends React.Component<IColorInputPicker>{
   }
 
 
-  public handleColorChange = (e:any) => {
+  public handleColorChange = (e:ColorResult) => {
     this.setState({
       ...this.state,
       color: e.hex
+    },()=>{
+      this.props.onChange(e);
     });
     return e.hex;
   }
