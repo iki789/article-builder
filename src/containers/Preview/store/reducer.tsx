@@ -41,7 +41,7 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     }
     if(action.payload === 'button'){
       data = {
-        label: 'Submit',
+        label: 'Button',
         type: 'default'
       }
     }
