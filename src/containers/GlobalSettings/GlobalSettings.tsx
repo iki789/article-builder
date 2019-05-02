@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Row, Col, FormLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { ColorResult } from 'react-color'
-import { UPDATE_MARGINS, UPDATE_THEME } from '../Preview/store/actions';
+import { UPDATE_FONTS, UPDATE_MARGINS, UPDATE_THEME } from '../Preview/store/actions';
 import './GlobalSettings.scss';
-import FontSettings from '../../components/Settings/Fonts/Fonts';
+import FontSettings, { IFonts } from '../../components/Settings/Fonts/Fonts';
 import MarginSettings, { IMargins } from '../../components/Settings/Margins/Margins';
 import ColorPicker from '../../components/UI/ColorPicker/ColorPicker';
 import ToggleButton from '../../components/UI/ToggleButton/ToggleButton';
@@ -16,8 +16,9 @@ interface IGlobalSettingsState{
 
 interface IGlobalSettingsProps{
   settings: ISettings,
-  onMarginsChange: (margins: IMargins) => void,
   onThemeColorChange: (color: string) => void,
+  onFontsChange: (fonts: IFonts) => void,
+  onMarginsChange: (margins: IMargins) => void
 }
 
 class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettingsState>{
@@ -36,6 +37,10 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
   public handleColorChange = (color:ColorResult) => {
     this.props.onThemeColorChange(color.hex);
   }
+  
+  public handleFontsChange = (fonts: IFonts) => {
+    this.props.onFontsChange(fonts);
+  }
 
   public handleMarginsChange = (margins: IMargins) => {
     this.props.onMarginsChange(margins);
@@ -47,7 +52,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
     <div>
       <Row>
           <Col className="mb-4" >
-            <FontSettings />
+            <FontSettings fonts={this.props.settings.fonts} onChange={this.handleFontsChange} />
           </Col>  
         </Row>
         <Row>
@@ -82,6 +87,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch:any) => {
   return {
+    onFontsChange: (fonts: IFonts) => dispatch(UPDATE_FONTS(fonts)),
     onMarginsChange: (margins: IMargins) => dispatch(UPDATE_MARGINS(margins)),
     onThemeColorChange: (color: string) => dispatch(UPDATE_THEME(color))
   }
