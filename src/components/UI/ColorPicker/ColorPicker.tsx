@@ -1,5 +1,6 @@
-import * as React from 'react';
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { UPDATE_THEME } from '../../../containers/Preview/store/actions';
 import './ColorPicker.scss';
 import { BlockPicker, ColorResult } from 'react-color';
 
@@ -83,7 +84,12 @@ class ColorInputPicker extends React.Component<IColorInputPickerProps, IColorInp
       })
     }
   }
-
 }
 
-export default ColorInputPicker;
+const mapDispatchToProps = (dispatch:any) => {
+  return {
+    onThemeColorChange: (color: string) => dispatch(UPDATE_THEME(color))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ColorInputPicker);
