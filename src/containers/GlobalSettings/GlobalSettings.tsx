@@ -8,14 +8,20 @@ import FontSettings from '../../components/Settings/Fonts/Fonts';
 import MarginSettings from '../../components/Settings/Margins/Margins';
 import ColorPicker from '../../components/UI/ColorPicker/ColorPicker';
 import ToggleButton from '../../components/UI/ToggleButton/ToggleButton';
+import { ISettings } from '../Preview/Preview';
 
-interface IGlobalSettings{
+interface IGlobalSettingsState{
   toggle: boolean
 }
 
-class GlobalSettings extends React.Component<{onThemeColorChange: (color: string) => void}, IGlobalSettings>{
+interface IGlobalSettingsProps{
+  onThemeColorChange: (color: string) => void,
+  settings: ISettings
+}
 
-  public state: IGlobalSettings = {
+class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettingsState>{
+
+  public state: IGlobalSettingsState = {
     toggle: false
   }
 
@@ -46,7 +52,7 @@ class GlobalSettings extends React.Component<{onThemeColorChange: (color: string
         <Row>
           <Col className="mb-4" >
             <FormLabel>Theme</FormLabel>
-            <ColorPicker color="red" showColorPicker={false} onChange={this.handleColorChange} />
+            <ColorPicker color={this.props.settings.theme} showColorPicker={false} onChange={this.handleColorChange} />
           </Col>
         </Row>
     </div>);
@@ -62,10 +68,16 @@ class GlobalSettings extends React.Component<{onThemeColorChange: (color: string
   }
 }
 
+const mapStateToProps = (state: any) => {
+  return {
+    settings: state.PreviewReducer.settings
+  }
+}
+
 const mapDispatchToProps = (dispatch:any) => {
   return {
     onThemeColorChange: (color: string) => dispatch(UPDATE_THEME(color))
   }
 }
 
-export default connect(null, mapDispatchToProps)(GlobalSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(GlobalSettings);
