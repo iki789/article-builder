@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
-import { UPDATE_MARGINS } from '../../../containers/Preview/store/actions';
 import './Margins.scss';
 import * as MarginIcon from "../../../assets/icons/ic_border_right_48px.svg"
 
@@ -25,7 +23,9 @@ class Margins extends React.Component<IMarginsProps, IMargins>{
   }
 
   public updateMargins = () => {
-    this.props.updateMargins(this.state);
+    if(this.props.onChange){
+      this.props.onChange(this.state);
+    }
   }
 
   public render(){
@@ -79,7 +79,7 @@ class Margins extends React.Component<IMarginsProps, IMargins>{
 
 interface IMarginsProps{
   margins: IMargins,
-  updateMargins: (margins: IMargins) => void
+  onChange?: (margins?: IMargins) => IMargins
 }
 
 export interface IMargins{
@@ -89,16 +89,4 @@ export interface IMargins{
   right: number
 }
 
-const mapPropsToState = (state: any) => {
-  return {
-    margins: state.PreviewReducer.settings.margins
-  }
-}
-
-const mapDispatchToState = (dispatch: any) => {
-  return {
-    updateMargins: (margins: IMargins) => dispatch(UPDATE_MARGINS(margins))
-  }
-}
-
-export default connect(mapPropsToState, mapDispatchToState)(Margins);
+export default Margins;
