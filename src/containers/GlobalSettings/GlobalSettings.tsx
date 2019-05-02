@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import { FormLabel } from 'react-bootstrap';
-
+import { Row, Col, FormLabel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { ColorResult } from 'react-color'
+import { UPDATE_THEME } from '../Preview/store/actions';
 import './GlobalSettings.scss';
 import FontSettings from '../../components/Settings/Fonts/Fonts';
 import MarginSettings from '../../components/Settings/Margins/Margins';
@@ -12,7 +13,7 @@ interface IGlobalSettings{
   toggle: boolean
 }
 
-class GlobalSettings extends React.Component<{}, IGlobalSettings>{
+class GlobalSettings extends React.Component<{onThemeColorChange: (color: string) => void}, IGlobalSettings>{
 
   public state: IGlobalSettings = {
     toggle: false
@@ -23,6 +24,10 @@ class GlobalSettings extends React.Component<{}, IGlobalSettings>{
       ...this.state,
       toggle: !this.state.toggle
     });
+  }
+
+  public handleColorChange = (color:ColorResult) => {
+    this.props.onThemeColorChange(color.hex);
   }
 
   public render(){
@@ -41,7 +46,7 @@ class GlobalSettings extends React.Component<{}, IGlobalSettings>{
         <Row>
           <Col className="mb-4" >
             <FormLabel>Theme</FormLabel>
-            <ColorPicker color="red" showColorPicker={false} />
+            <ColorPicker color="red" showColorPicker={false} onChange={this.handleColorChange} />
           </Col>
         </Row>
     </div>);
@@ -57,4 +62,10 @@ class GlobalSettings extends React.Component<{}, IGlobalSettings>{
   }
 }
 
-export default GlobalSettings;
+const mapDispatchToProps = (dispatch:any) => {
+  return {
+    onThemeColorChange: (color: string) => dispatch(UPDATE_THEME(color))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(GlobalSettings);
