@@ -48,22 +48,24 @@ const mapStateToProps = (state:any) =>  {
 export default connect(mapStateToProps)(Preview);
 
 export interface IPreviewState{
-  settings:{
-    fonts:{
-      color: string,
-      family: string,
-      size: number
-    },
-    theme: string,
-    margins:{
-      bottom: number,
-      left: number,
-      right: number,
-      top: number
-    }
-  },
+  settings: ISettings,
   rows: IRow[],
   colCount: number
+}
+
+export interface ISettings{
+  fonts:{
+    color: string,
+    family: string,
+    size: number
+  },
+  theme: string,
+  margins:{
+    bottom: number,
+    left: number,
+    right: number,
+    top: number
+  }
 }
 
 export interface IPreviewProps{
