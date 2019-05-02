@@ -16,7 +16,7 @@ const initialState: IPreviewState = {
       right: 1,
       top: 1
     },
-    theme: 'red'
+    theme: '#2699FB'
   },
   rows:[
     {
