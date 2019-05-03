@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextEditor, Video, Image, Button } from '../index';
+import { TextEditor, TextViewer, Video, Image, Button } from '../index';
 import { ICol } from 'src/containers/Preview/Preview';
 import { ACTIVATE_COL, UNSET_COL } from '../../../store/actions/app';
 import './ComponentMount.scss';
@@ -10,7 +10,7 @@ const ComponentMount: React.StatelessComponent<IComponentMountProps> = (props: I
   
   switch(props.type){
     case 'text':
-      toMountComponent = <div dangerouslySetInnerHTML={{__html: props.data}} />;
+      toMountComponent = <TextViewer value={props.data} />;
       break;
     case 'image':
       toMountComponent = <Image src={props.data.src} caption={props.data.caption} url={props.data.url} />;
