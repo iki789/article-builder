@@ -10,7 +10,7 @@ const ComponentMount: React.StatelessComponent<IComponentMountProps> = (props: I
   
   switch(props.type){
     case 'text':
-      toMountComponent = <TextViewer value={props.data} />;
+      toMountComponent = <TextViewer value={props.data} theme={props.theme} />;
       break;
     case 'image':
       toMountComponent = <Image src={props.data.src} caption={props.data.caption} url={props.data.url} />;
@@ -57,13 +57,15 @@ interface IComponentMountProps{
   data?: React.ReactElement | any,
   colId?: number,
   activeCol: ICol,
+  theme: string,
   deactivateCol: () => void,
   activateCol: (col: ICol) => void
 }
 
 const mapStateToProps = (state: any) => {
   return {
-    activeCol: state.rootReducer.activeCol
+    activeCol: state.rootReducer.activeCol,
+    theme: state.PreviewReducer.settings.theme
   }
 }
 
