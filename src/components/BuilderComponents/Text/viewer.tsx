@@ -6,11 +6,15 @@ class TextViewer extends React.Component<ITextViewerProps>{
     value: this.props.value
   }
   
+  public componentWillUpdate(nextProps: ITextViewerProps){
+    if(this.state.value !== nextProps.value){
+      this.state.value = nextProps.value;
+    }
+  }
+
   public render(){
     return (
-      <div>
-        {this.state.value}
-      </div>
+      <div dangerouslySetInnerHTML={{__html: this.state.value}} />
     )
   }
 }
