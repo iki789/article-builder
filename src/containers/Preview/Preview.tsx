@@ -9,10 +9,10 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
   public render() {
     const settings = this.props.state.settings;
     const styles = {
-      paddingLeft: `${settings.margins.left}rem`,
-      paddingRight: `${settings.margins.right}rem`,
-      paddingTop: `${settings.margins.top}rem`,
-      paddingBottom: `${settings.margins.bottom}rem`,
+      paddingLeft: `${settings.margins.left}%`,
+      paddingRight: `${settings.margins.right}%`,
+      paddingTop: `${settings.margins.top}%`,
+      paddingBottom: `${settings.margins.bottom}%`,
       fontFamily: `${settings.fonts.family}, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
       fontSize: `${settings.fonts.size}rem`,
       color: `${settings.fonts.color}`
