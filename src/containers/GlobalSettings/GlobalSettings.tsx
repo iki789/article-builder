@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Row, Col, FormLabel } from 'react-bootstrap';
+import { Row, Col, FormLabel, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { ColorResult } from 'react-color'
 import { UPDATE_FONTS, UPDATE_MARGINS, UPDATE_THEME } from '../Preview/store/actions';
@@ -64,6 +64,15 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
           <Col className="mb-4" >
             <FormLabel>Theme</FormLabel>
             <ColorPicker color={this.props.settings.theme} showColorPicker={false} onChange={this.handleColorChange} />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mb-4" >
+            <FormLabel>Export</FormLabel>
+            <div>
+              <Button size="sm" className="mr-2">HTML</Button>
+              <Button size="sm">JPEG</Button>
+            </div>
           </Col>
         </Row>
     </div>);
