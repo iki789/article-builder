@@ -7,6 +7,10 @@ class TextViewer extends React.Component<ITextViewerProps>{
     theme: this.props.theme
   }
   
+  public componentWillMount(){
+    this.state.value = this.addThemeColorToHtml(this.props);
+  }
+
   public componentWillUpdate(nextProps: ITextViewerProps){
     if(this.state.value !== nextProps.value){
       this.state.value = this.addThemeColorToHtml(nextProps);
