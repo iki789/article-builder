@@ -4,22 +4,7 @@ import randomArtical from '../mocks/mocks';
 import { IPreviewState, IRow, ICol } from '../Preview';
 
 const initialState: IPreviewState = {
-  settings:{
-    fonts:{
-      color: '#333',
-      family:'Roboto',
-      size: 1
-    },
-    margins:{
-      bottom: 1,
-      left: 1,
-      right: 1,
-      top: 1
-    },
-    theme: '#2699FB'
-  },
-  rows:[...randomArtical],
-  colCount: 0
+ ...randomArtical
 }
 
 export const PreviewReducer:Reducer = (state:IPreviewState = initialState, action) => {
