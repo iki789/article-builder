@@ -118,10 +118,24 @@ const articalAntMan = ():IPreviewState => {
   cols.forEach((col:ICol)=>{
     rows.push({cols: [{...col}]})
   })
-  return preview(rows, 'Lustria', '#697689');
+  return preview(rows, 'Old Standard TT', '#697689');
 }
 
-const articals: IPreviewState[] = [articalKittens(), articalAntMan()];
+const articalManGoose = ():IPreviewState => {
+  const cols:ICol[] = [];
+  cols.push(image(1, 'https://images2.laweekly.com/imager/man-allegedly-bench-presses-goose-for-10-m/u/original/4242367/bench_pressing_goose.jpg'))
+  cols.push(text(2, `<h2><strong>Man Allegedly Bench-Presses Goose for 10 Minutes at L.A. Park; Goose Allegedly Loves It<strong></h2>`));
+  cols.push(text(3, '<strong>Update: "<a href="http://blogs.laweekly.com/informer/2012/03/goose_whisperer_of_hollenbeck_park.php" target="_blank">Who Is the Goose Whisperer of Hollenbeck Park?</a>"</strong>'));
+  cols.push(text(4, `<p><a href="http://www.reddit.com/r/funny/comments/qtbfg/you_see_the_weirdest_things_at_parks_in_la_this/?limit=500" target="_blank">Reddit</a> and <a href="http://redirectit.itelcel.com.clon-games.appspot.com/lisabunnies.tumblr.com/post/19212468675/you-see-the-weirdest-things-at-parks-in-la-this" target="_blank">Tumblr</a> exploded yesterday with a photo of a barefooted man lying on the hillside of a somewhat crummy-looking park.</p><br><p>The man -- by all appearances -- was <strong>bench-pressing a goose</strong>.</p><br><p>Scott Lowell, the B-list actor who originally <a href="https://twitter.com/#!/scolo/status/179277869225230339/photo/1" target="_blank">Tweeted</a> the photo (sort of a George Clooney lookalike who <a href="http://www.scottlowell.com/" target="_blank">does a lot of theater and cop TV</a>), writes only that the crummy park in question is located in Los Angeles, and that the goose...</p><br><p>... was not exactly protesting.</p><br><p>In response to the onslaught of questions he obviously received in response to the Tweet, Lowell went on to imply that the man and the goose have some sort of relationship outside of bench-pressing.</p><br><p>"It was ABSOLUTELY a real Goose!!" <a href="https://twitter.com/#!/scolo/status/179368199471636480" target="_blank">wrote Lowell</a>. "After bench-pressing it he cradled it, tickled it's tummy and then it walked away."</p><br><p>If all the above proves true, this magical Disney friend of the L.A. park animals has definitely given <a href="http://www.cbsnews.com/2100-18563_162-20037484.html" target="_blank">the Echo Park goose man</a> a run for his money. It's one thing to "walk around the park together like you're in love." But bench-pressing? Dr. Doolittle might call this third base.</p><br><p>[<a href="http://twitter.com/#%21/simone_electra" target="_blank">@simone_electra</a> / <a href="mailto:swilson@laweekly.com" target="_blank">swilson@laweekly.com</a> / <a href="http://twitter.com/#%21/LAWeeklyNews" target="_blank">@LAWeeklyNews</a>]</p>`));
+
+  const rows: IRow[] = [] ;
+  cols.forEach((col:ICol)=>{
+    rows.push({cols: [{...col}]})
+  })
+  return preview(rows, 'Poppins', '#555555');
+}
+
+const articals: IPreviewState[] = [articalKittens(), articalAntMan(), articalManGoose()];
 const randomArtical: IPreviewState = articals[Math.floor(Math.random()*articals.length)]; 
 
 export default randomArtical;
