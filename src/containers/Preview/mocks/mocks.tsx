@@ -1,5 +1,5 @@
 // import { IText } from '../../../components/BuilderComponents/Text'
-import { IRow, ICol } from '../Preview'
+import { IRow, ICol, IPreviewState } from '../Preview'
 
 const text = (id:number, htmlString: string):ICol => {
   return {
@@ -45,9 +45,36 @@ const image = (id: number, src: string, caption?: string, url?: string) => {
 //   }
 // }
 
-const articalKittens = ():IRow[] => {
+const preview = (rows: IRow[], fonts: string = 'Roboto', theme: string = '#d3d3d3'):IPreviewState => {
+  let count = 0 ;
+  rows.forEach(row=>{
+    row.cols.forEach(() => {
+      count++;
+    });
+  })
+  return {
+    colCount: count,
+    rows,
+    settings:{
+      fonts:{
+        color: '#333',
+        family: fonts,
+        size: 1
+      },
+      margins:{
+        left: 1,
+        right: 1,
+        bottom: 1,
+        top: 1
+      },
+      theme
+    }
+  }
+}
+
+const articalKittens = ():IPreviewState => {
   const cols:ICol[] = [];
-  cols.push(text(0, `<h1><strong>Bobcat displaced by California's Woolsey Fire gives birth to 4 kittens.</strong></h1>`));
+  cols.push(text(0, `<h2><strong>Bobcat displaced by California's Woolsey Fire gives birth to 4 kittens.</strong></h2>`));
   cols.push(image(1, `https://media.mnn.com/assets/images/2019/04/bobcat_kittens.jpg.653x0_q80_crop-smart.jpg`, ' There were three female and one male bobcat kitten in the litter. (Photo: National Park Service/Flickr)'));
   cols.push(text(2, `<p>Just days before the <a href="https://www.mnn.com/earth-matters/wilderness-resources/blogs/californias-camp-wildfire-unprecedented-event" target="_blank">Woolsey Fire</a> started last November, a young bobcat was captured and collared so biologists could keep track of her. The fire went on to burn nearly 100,000 acres in Los Angeles and Ventura counties.</p><p>Biologists from the Santa Monica Mountains National Recreation Area found that bobcat B-362 had relocated to an area of dense vegetation in a large backyard in Westlake Village, a city about 10 miles from Thousand Oaks. She recently gave birth in her new home to four kittens: B-364, B-365, B-366 and B-367.</p>`))
   cols.push(image(3, 'https://media.mnn.com/assets/images/2019/04/bobcat_in_grass.jpg.838x0_q80.jpg', 'The bobcat den was in an area unaffected by the fire. (Photo: National Park Service/Flickr)'));
@@ -65,10 +92,21 @@ const articalKittens = ():IRow[] => {
   cols.forEach((col:ICol)=>{
     rows.push({cols: [{...col}]})
   })
-  return rows;
+  return preview(rows);
 }
 
-const articals: IRow[][] = [articalKittens()];
-const randomArtical: IRow[] = articals[Math.floor(Math.random()*articals.length)]; 
+// const articalAntMan = ():IRow[] => {
+//   const cols:ICol[] = [];
+//   cols.push(text(0, `<h1><strong>Bobcat displaced by California's Woolsey Fire gives birth to 4 kittens.</strong></h1>`));
+  
+//   const rows: IRow[] = [] ;
+//   cols.forEach((col:ICol)=>{
+//     rows.push({cols: [{...col}]})
+//   })
+//   return rows;
+// }
+
+const articals: IPreviewState[] = [articalKittens()];
+const randomArtical: IPreviewState = articals[Math.floor(Math.random()*articals.length)]; 
 
 export default randomArtical;
