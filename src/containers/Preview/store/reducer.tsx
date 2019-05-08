@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import * as ActionTypes from './actionTypes';
-
+import randomArtical from '../mocks/mocks';
 import { IPreviewState, IRow, ICol } from '../Preview';
 
 const initialState: IPreviewState = {
@@ -18,7 +18,7 @@ const initialState: IPreviewState = {
     },
     theme: '#2699FB'
   },
-  rows:[],
+  rows:[...randomArtical],
   colCount: 0
 }
 
