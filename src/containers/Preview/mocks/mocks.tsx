@@ -95,31 +95,6 @@ const articalKittens = ():IPreviewState => {
   return preview(rows);
 }
 
-const articalAntMan = ():IPreviewState => {
-  const cols:ICol[] = [];
-  cols.push(text(0, `<h1>‘Ant-Man’ Star Paul Rudd Raises Big Money for Charity With Avengers-Autographed Captain America Shield</h1>`));
-  cols.push(image(1, 'https://pbs.twimg.com/media/DeyqF_lX4AAm8-e.jpg', 'Last night at the annual @BigSlickKC fundraiser, Ant-Man himself Paul Rudd auctioned off this Captain America shield signed by all the MCU stars. It sold for $53,000 with all proceeds going to the Kansas City @ChildrensMercy hospital!'))
-  cols.push(text(2, `<iframe width="100%" height="360" src="https://www.youtube.com/embed/VSF2xE07MvU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`));
-  cols.push(text(3, `
-    <p><em>Ant-Man and the Wasp</em> star <a href="/category/paul-rudd">Paul Rudd</a> helped bring in over $2 million dollars in a charity event benefittng Kansas’ Children’s Mercy hospital, where Rudd wielded a Captain America shield signed by the cast of <em>Avengers: Infinity War.</em></p><br>
-    <p>"I spent a lot of time this past summer hanging out with a bunch of superheroes," said Rudd, <a href="http://www.kansascity.com/entertainment/article212241569.html">according to KansasCity.com</a>, who missed out on crossover epic <em>Infinity War</em> but appears next in <em>Ant-Man and the Wasp</em> and <em>Avengers 4</em>.</p><br>
-    <p>Rudd wrangled up signatures from about 30 Marvel stars, including Robert Downey Jr. (Iron Man), Chris Hemsworth (Thor), Scarlett Johansson (Black Widow), and the expansive casts of <em>Guardians of the Galaxy</em> and <em>Black Panther</em>. Marvel Entertainment provided the authentic-looking shield.</p><br>
-    <p>“This is real Vibranium. I'm pretty sure it's the only Vibranium item we're offering tonight,” Rudd said of the famed fictional material hailing from Wakanda responsible for making up much of the star-spangled Avenger’s trusty weapon. “It feels cool just to be holding it, I gotta be honest with you.”</p><br>
-    <p>The autographed shield sold for $53,000. The star later offered a pair of tickets to the June 25th Hollywood premiere of the <em>Ant-Man</em> sequel, which teams Rudd’s ex-con-turned-superhero with newly minted partner Hope van Dyne (Evangeline Lilly).</p><br>
-    <p>David Dastmalchian, who plays Scott Lang’s hacker buddy in both <em>Ant-Man</em> installments, offered a second pair of tickets, which Dastmalchian offered up in character as Kurt — complete with thick Russian accent. The tickets sold for $60,000 and $45,000, respectively.</p><br>
-    <p>The star-studded Big Slick Celebrity Weekend auction saw participation from Rob Riggle (<em>The Hangover</em>), Jason Sudeikis (<em>Saturday Night Live</em>), Eric Stonestreet (<em>Modern Family</em>), David Koechner (<em>The Office</em>) and about two dozen more celebrity guests.</p><br>
-    <p>Kansas City native Stonestreet offered a set visit to his hit ABC sitcom, headed into its 10th and final season, which sold for $26,000.</p><br>
-    <p>Sudeikis brought in another $30,000 for an SNL set visit and Dastmalchian sold a visit to CBS’ <em>MacGyver</em>, where he plays the villain Murdoc, for another $12,000.</p><br>
-    <p><em>Spider-Man: Homecoming</em> star Martin Starr offered up a set visit to HBO’s <em>Silicon Valley</em>, which sold for $22,000 after Big Slick guests Angela Kinsey (<em>The Office</em>), Charlie Day (<em>It’s Always Sunny in Philadelphia</em>), and Adam Devine (<em>Pitch Perfect</em>) offered to join in.</p><br>
-    <a class="mid-content-comment" href="javascript:;" onclick="onClickActivateComments(225087,'#comments')"><span>1</span><span>comments</span></a><p>All in all, the weekend earned $2,099,787, marking the first time the annual fundraiser broke $2 million since its launch in 2010.</p><br>
-    <p>Rudd next headlines <em>Ant-Man and the Wasp</em>, out July 6th, before <a href="/category/ant-man-and-the-wasp">Ant-Man and the Wasp</a> team with the wider Marvel Cinematic Universe in <em>Avengers 4</em>, out May 3, 2019.</p><br>`))
-
-  const rows: IRow[] = [] ;
-  cols.forEach((col:ICol)=>{
-    rows.push({cols: [{...col}]})
-  })
-  return preview(rows, 'Old Standard TT', '#697689');
-}
 
 const articalManGoose = ():IPreviewState => {
   const cols:ICol[] = [];
@@ -135,7 +110,7 @@ const articalManGoose = ():IPreviewState => {
   return preview(rows, 'Poppins', '#555555');
 }
 
-const articals: IPreviewState[] = [articalKittens(), articalAntMan(), articalManGoose()];
+const articals: IPreviewState[] = [articalKittens(), articalManGoose()];
 const randomArtical: IPreviewState = articals[Math.floor(Math.random()*articals.length)]; 
 
 export default randomArtical;
