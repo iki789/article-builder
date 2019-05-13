@@ -1,4 +1,5 @@
 import React from 'react';
+import color from 'color';
 
 class TextViewer extends React.Component<ITextViewerProps>{
   
@@ -26,9 +27,15 @@ class TextViewer extends React.Component<ITextViewerProps>{
   private addThemeColorToHtml = (props: ITextViewerProps): string => {
     const parsedStringToHtml = document.createElement('div');
     parsedStringToHtml.innerHTML = props.value ;
-    const headings = parsedStringToHtml.querySelectorAll('h1, h2, h3, h4');
-    headings.forEach((heading: HTMLElement) => {
-      heading.style.color = props.theme;
+    const elements = parsedStringToHtml.querySelectorAll('h1, h2, h3, h4, blockquote');
+    elements.forEach((tag: HTMLElement) => {
+      if(tag.nodeName === 'H1' || tag.nodeName === 'H2' || tag.nodeName === 'H3' || tag.nodeName === 'H4'){
+        tag.style.color = props.theme;
+      }
+      if(tag.nodeName === 'BLOCKQUOTE'){
+        tag.style.backgroundColor = color(props.theme).alpha(0.1).toString()
+        tag.style.borderColor = props.theme
+      }
     });
     // Return string
     return parsedStringToHtml.outerHTML;
