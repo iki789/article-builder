@@ -1,4 +1,3 @@
-// import { IText } from '../../../components/BuilderComponents/Text'
 import { IRow, ICol, IPreviewState } from '../Preview'
 
 const text = (id:number, htmlString: string):ICol => {
@@ -72,7 +71,7 @@ const preview = (rows: IRow[], fonts: string = 'Roboto', theme: string = '#2699F
   }
 }
 
-const articalKittens = ():IPreviewState => {
+const articleKittens = ():IPreviewState => {
   const cols:ICol[] = [];
   cols.push(text(0, `<h2><strong>Bobcat displaced by California's Woolsey Fire gives birth to 4 kittens.</strong></h2>`));
   cols.push(image(1, `https://media.mnn.com/assets/images/2019/04/bobcat_kittens.jpg.653x0_q80_crop-smart.jpg`, ' There were three female and one male bobcat kitten in the litter. (Photo: National Park Service/Flickr)'));
@@ -96,7 +95,7 @@ const articalKittens = ():IPreviewState => {
 }
 
 
-const articalManGoose = ():IPreviewState => {
+const articleManGoose = ():IPreviewState => {
   const cols:ICol[] = [];
   cols.push(image(1, 'https://images2.laweekly.com/imager/man-allegedly-bench-presses-goose-for-10-m/u/original/4242367/bench_pressing_goose.jpg'))
   cols.push(text(2, `<h2><strong>Man Allegedly Bench-Presses Goose for 10 Minutes at L.A. Park; Goose Allegedly Loves It<strong></h2>`));
@@ -110,7 +109,7 @@ const articalManGoose = ():IPreviewState => {
   return preview(rows, 'Poppins', '#555555');
 }
 
-const articals: IPreviewState[] = [articalKittens(), articalManGoose()];
-const randomArtical: IPreviewState = articals[Math.floor(Math.random()*articals.length)]; 
+const articles: IPreviewState[] = [articleKittens(), articleManGoose()];
+const randomarticle: IPreviewState = articles[Math.floor(Math.random()*articles.length)]; 
 
-export default randomArtical;
+export default randomarticle;
