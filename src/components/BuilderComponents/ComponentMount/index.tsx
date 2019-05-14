@@ -22,7 +22,7 @@ const ComponentMount: React.StatelessComponent<IComponentMountProps> = (props: I
       toMountComponent = <Video src={props.data.src} title={props.data.title} poster={props.data.poster} />;
       break;
     case 'embed':
-      toMountComponent = <Embed code="<h1>hello</h1>" />;
+      toMountComponent = <Embed code={props.data.code} />;
       break;
     default:
       toMountComponent = (
