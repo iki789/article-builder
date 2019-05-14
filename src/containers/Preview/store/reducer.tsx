@@ -30,6 +30,12 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
       }
     }
     
+    if(action.payload === 'embed'){
+      data = {
+        code: 'code'
+      }
+    }
+
     state = {
       ...state,
       rows:[
