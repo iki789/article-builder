@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { UNSET_COL } from '../../store/actions/app';
 import { REMOVE_COL } from '../../containers/Preview/store/actions';
-import { TextEditor, ImageForm, VideoControl, ButtonControl } from './index';
+import { TextEditor, ImageForm, VideoControl, ButtonControl, EmbedControl } from './index';
 import { ICol } from 'src/containers/Preview/Preview';
 
 const ComponentMount = (props:IComponentFormMoutProps) => {
@@ -19,6 +19,9 @@ const ComponentMount = (props:IComponentFormMoutProps) => {
       break;
     case 'button':
       toMountComponent = <ButtonControl label={props.data.label} url={props.data.url} type={props.data.type} block={props.data.block} />;
+      break;
+    case 'embed':
+      toMountComponent = <EmbedControl code="" />;
       break;
     default:
       toMountComponent = null
