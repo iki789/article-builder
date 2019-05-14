@@ -25,6 +25,11 @@ class ComponentList extends Component<IComponentListProps> {
       label: "button",
       type: "button",
       icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='57' height='16' viewBox='0 0 57 16'%3E%3Crect id='Rectangle_1093' data-name='Rectangle 1093' width='57' height='16' rx='4' fill='%232699fb'/%3E%3Ctext id='Button' transform='translate(18 10)' fill='%23fff' font-size='8' font-family='SitkaDisplay, Sitka Display'%3E%3Ctspan x='0' y='0'%3EButton%3C/tspan%3E%3C/text%3E%3C/svg%3E%0A"
+    },
+    {
+      label: "embed",
+      type: "embed",
+      icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='30' viewBox='0 0 50 30'%3E%3Cpath id='ic_code_48px' d='M28.7,57.1,17.325,45.6l11.5-11.5L25.2,30.6l-15,15,15,15Zm13,0L53.2,45.6,41.7,34.1l3.5-3.5,15,15-15,15Z' transform='translate(-10.2 -30.6)' fill='%232699fb'/%3E%3C/svg%3E%0A"
     }
   ];
 
