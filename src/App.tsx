@@ -25,7 +25,7 @@ class App extends React.Component<IAppProps, IAppState> {
     return (
       <Container fluid={true}>
         <Row>
-          <Col className="Config-pane">
+          <Col className="Config-pane col-12 col-md-6">
             <div className="wrapper">
               <GloblaSettings />
               <div className="d-flex justify-content-center align-items-center h-100">
