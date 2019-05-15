@@ -8,7 +8,10 @@ import './embed.scss';
 export const Embed: React.FunctionComponent<IEmbed> =  (props: IEmbed) => {
   return (
     <React.Fragment>
-      <div className="embed-wrapper" dangerouslySetInnerHTML={{__html: props.code}} />
+      <button className="btn btn-sm" style={{padding: "0 4px", background: "#f4f4f4"}}>&lt;/&gt;</button>
+      <div className="embed-wrapper">
+        <div dangerouslySetInnerHTML={{__html: props.code}} />
+      </div>
     </React.Fragment>
   )
 }
