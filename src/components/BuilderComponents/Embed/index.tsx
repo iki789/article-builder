@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { Row, Col, Form } from 'react-bootstrap';
 import { ICol } from 'src/containers/Preview/Preview';
 import { UPDATE_COL } from 'src/containers/Preview/store/actions';
+import './embed.scss';
 
 export const Embed: React.FunctionComponent<IEmbed> =  (props: IEmbed) => {
   return (
     <React.Fragment>
-      <div dangerouslySetInnerHTML={{__html: props.code}} />
+      <div className="embed-wrapper" dangerouslySetInnerHTML={{__html: props.code}} />
     </React.Fragment>
   )
 }
