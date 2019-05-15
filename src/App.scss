@@ -1,4 +1,8 @@
 @import "./variables";
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/grid';
 
 .Config-pane{
   padding: 0 !important;
@@ -16,6 +20,10 @@
     padding: 1rem;
     background-color: #F1F9FF;
     border-radius: 10px;
-    min-width: 450px;
+  }
+  @include media-breakpoint-up(sm){
+    .ComponentEditorWrapper{
+      min-width: 400px;
+    }    
   }
 }
