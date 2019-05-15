@@ -23,7 +23,7 @@
   }
   @include media-breakpoint-up(sm){
     .ComponentEditorWrapper{
-      min-width: 400px;
+      width: 96%;
     }    
   }
 }
