@@ -3,8 +3,23 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import './Preview.scss';
 import { ComponentMount } from '../../components/BuilderComponents'
+import { CLEAR_ROWS } from './store/actions';
 
 class Preview extends React.Component<IPreviewProps, IPreviewState> {
+
+  public toolbar: React.RefObject<HTMLDivElement>;
+
+  public constructor(props:IPreviewProps){
+    super(props);
+    this.toolbar = React.createRef();
+  }
+
+  public clearArticle = () => {
+    if(this.toolbar.current){
+      this.toolbar.current.style.display = 'none';
+    }
+    this.props.clearRows();
+  }
 
   public render() {
     const settings = this.props.state.settings;
@@ -19,8 +34,8 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
     }
     return (
       <div>
-        <div className="create-article-toolbar">
-          <button>Create New Article</button>
+        <div ref={this.toolbar} className="create-article-toolbar">
+          <button onClick={this.clearArticle}>Create New Article</button>
         </div>
         <div style={styles} className="Preview">
           {
@@ -50,7 +65,14 @@ const mapStateToProps = (state:any) =>  {
   }
 }
 
-export default connect(mapStateToProps)(Preview);
+const mapDispatchToProps = (dispatch:any) =>  {
+  return {
+    clearRows: () => dispatch(CLEAR_ROWS())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preview);
 
 export interface IPreviewState{
   settings: ISettings,
@@ -74,7 +96,8 @@ export interface ISettings{
 }
 
 export interface IPreviewProps{
-  state: IPreviewState
+  state: IPreviewState,
+  clearRows: () => void
 }
 
 export interface IRow{
