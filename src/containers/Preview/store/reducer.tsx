@@ -32,7 +32,7 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     
     if(action.payload === 'embed'){
       data = {
-        code: 'code'
+        code: '<iframe width="1280" height="720" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
       }
     }
 
