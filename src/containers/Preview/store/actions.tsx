@@ -44,3 +44,7 @@ export const UPDATE_THEME = (color: string) => {
     payload: { color }
   }
 }
+
+export const CLEAR_ROWS = () => ({
+  type: ActionTypes.CLEAR_ROWS
+})

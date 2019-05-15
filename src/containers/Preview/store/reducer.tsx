@@ -46,6 +46,13 @@ export const PreviewReducer:Reducer = (state:IPreviewState = initialState, actio
     };
   }
   
+  if(action.type === ActionTypes.CLEAR_ROWS){
+    state = {
+      ...state,
+      rows: []
+    }
+  }
+
   if(action.type === ActionTypes.UPDATE_COL){
     const rows:IRow[] = [...state.rows];
     rows.map((row:IRow) => {
