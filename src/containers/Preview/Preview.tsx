@@ -18,22 +18,27 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
       color: `${settings.fonts.color}`
     }
     return (
-      <div style={styles} className="Preview">
-        {
-          this.props.state.rows.map((row, i)=>{
-            return (
-            <Row key={i}>
-              {row.cols.map(col=>{
-                return (
-                <Col key={col.id}>
-                  <ComponentMount colId={col.id} type={col.type} data={col.data} />
-                </Col>
-                )
-              })}
-            </Row>
-            )
-          })
-        }
+      <div>
+        <div className="create-article-toolbar">
+          <button>Create New Article</button>
+        </div>
+        <div style={styles} className="Preview">
+          {
+            this.props.state.rows.map((row, i)=>{
+              return (
+              <Row key={i}>
+                {row.cols.map(col=>{
+                  return (
+                  <Col key={col.id}>
+                    <ComponentMount colId={col.id} type={col.type} data={col.data} />
+                  </Col>
+                  )
+                })}
+              </Row>
+              )
+            })
+          }
+        </div>
       </div>
     )
   }
