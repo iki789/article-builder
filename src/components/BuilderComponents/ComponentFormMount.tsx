@@ -21,7 +21,7 @@ const ComponentMount = (props:IComponentFormMoutProps) => {
       toMountComponent = <ButtonControl label={props.data.label} url={props.data.url} type={props.data.type} block={props.data.block} />;
       break;
     case 'embed':
-      toMountComponent = <EmbedControl code="" />;
+      toMountComponent = <EmbedControl code={props.data.code} />;
       break;
     default:
       toMountComponent = null
