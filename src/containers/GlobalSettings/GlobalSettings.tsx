@@ -49,7 +49,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
 
   public render(){
     const settingComponents = (
-    <div>
+    <div className="mt-5">
       <Row>
           <Col className="mb-4" >
             <FontSettings fonts={this.props.settings.fonts} onChange={this.handleFontsChange} />
@@ -79,7 +79,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
     return (
       <div className="Global-Settings-Component">
         <Row className="justify-content-between align-items-center">
-          <h4 className={this.state.toggle ? 'mb-5' : ''}>Global Settings</h4>
+          <h4>Global Settings</h4>
           <ToggleButton clicked={this.toggle} open={this.state.toggle} />
         </Row>
         {this.state.toggle ? settingComponents : ''}
