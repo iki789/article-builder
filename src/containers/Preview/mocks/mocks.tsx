@@ -44,6 +44,14 @@ const image = (id: number, src: string, caption?: string, url?: string) => {
 //   }
 // }
 
+const embed = (id: number, code: string) => {
+  return {
+    id,
+    type: 'embed',
+    data: { code }
+  }
+}
+
 const preview = (rows: IRow[], fonts: string = 'Roboto', theme: string = '#2699FB'):IPreviewState => {
   let count = 0 ;
   rows.forEach(row=>{
@@ -129,7 +137,7 @@ const articleBulbasaur = ():IPreviewState => {
 const articlePuppies = ():IPreviewState => {
   const cols:ICol[] = [];
   cols.push(text(1, `<h2><strong>Puppies training to be service dogs 'graduate' kindergarten<strong></h2>`));
-  cols.push(image(2, 'https://nerdist.com/wp-content/uploads/2019/05/Bulba-1200x676.png'))
+  cols.push(embed(2, '<iframe scrolling="no" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen allow="autoplay; fullscreen" src="https://w3.cdn.anvato.net/player/prod/v3/anvload.html?key=eyJtIjoiZXBmb3giLCJwIjoiZGVmYXVsdCIsInYiOiI1NjExNjEiLCJhbnZhY2siOiJseFFNTjVKNm5XdVJiM1dzOURGYkpxdmFVakphMjVBWSIsInNoYXJlTGluayI6Imh0dHA6Ly93d3cuZm94OS5jb20vbmV3cy9wdXBwaWVzLXRyYWluaW5nLXRvLWJlLXNlcnZpY2UtZG9ncy1ncmFkdWF0ZS1raW5kZXJnYXJ0ZW4iLCJwbHVnaW5zIjp7ImRmcCI6eyJjbGllbnRTaWRlIjp7ImFkVGFnVXJsIjoiaHR0cHM6Ly9wdWJhZHMuZy5kb3VibGVjbGljay5uZXQvZ2FtcGFkL2Fkcz9zej02NDB4NDgwJml1PS82Mzc5MDU2NC9rbXNwL25ld3MmY2l1X3N6cz0zMDB4MjUwJmltcGw9cyZnZGZwX3JlcT0xJmVudj12cCZvdXRwdXQ9dmFzdCZ2cG9zPXByZXJvbGwmdW52aWV3ZWRfcG9zaXRpb25fc3RhcnQ9MSZ1cmw9W3JlZmVycmVyX3VybF0mY29ycmVsYXRvcj1bdGltZXN0YW1wXSZkZXNjcmlwdGlvbl91cmw9aHR0cCUzQSUyRiUyRnd3dy5mb3g5LmNvbSUyRm5ld3MlMkZwdXBwaWVzLXRyYWluaW5nLXRvLWJlLXNlcnZpY2UtZG9ncy1ncmFkdWF0ZS1raW5kZXJnYXJ0ZW4ifSwibGlicmFyeVJlcXVlc3RlZCI6dHJ1ZX19LCJodG1sNSI6dHJ1ZSwidG9rZW4iOiJkZWZhdWx0In0%3D"  width ="640" height="360"></iframe>'))
   cols.push(text(3, ' <div class="author-share"> <div class="author">By <a href="mailto:?body=http://www.fox9.com/news/puppies-training-to-be-service-dogs-graduate-kindergarten">Maury Glover, FOX 9 </a> </div> </div> <div class="meta"> <p class="updated"><strong>Posted</strong><span>&nbsp;May 06 2019 08:56PM CDT</span></p> <p class="videoPostedDate-405337854"><strong>Video Posted</strong><span>&nbsp;May 06 2019 09:57PM CDT<span></span></span></p> <p class="updated"><strong>Updated</strong><span>&nbsp;May 06 2019 10:10PM CDT</span></p> </div>'));
   cols.push(text(4, `<p><strong class="dateline">NEW HOPE, Minn. (FOX 9)</strong> - A group of puppies are one step closer to becoming service dogs after they've spent their past several weeks training in an unconventional place.</p><p>For a litter of puppies at Can Do Canines Monday, it’s graduation day from canine kindergarten. Instead of a diploma, they will be getting a new foster family for the next couple of months.</p><br><p>For the last five weeks, seven Labrador-golden retriever mix puppies have been training with inmates at the federal correctional facility in Duluth.</p><br><p>Now Yanni, Yale, Yeti, Yuki, Yasmin, O'Hara and Blarney will move in with volunteers, so they can get good at more than just teething and wagging their tails.</p><br>`));
   cols.push(image(5, 'https://media.fox9.com/media.fox9.com/photo/2019/05/06/9%20P%20-%20CAN%20DO%20CANINES_00.00.15.03_1557194394850.png_7227878_ver1.0_1280_720.jpg'))
