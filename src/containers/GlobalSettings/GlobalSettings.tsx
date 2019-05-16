@@ -77,8 +77,8 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
         </Row>
     </div>);
     return (
-      <div className="Component">
-        <Row className="justify-content-between">
+      <div className="Global-Settings-Component">
+        <Row className="justify-content-between align-items-center">
           <h4 className={this.state.toggle ? 'mb-5' : ''}>Global Settings</h4>
           <ToggleButton clicked={this.toggle} open={this.state.toggle} />
         </Row>
