@@ -97,7 +97,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
             <div>
               <Button size="sm" className="mr-2" onClick={this.handleHtmlExport}>HTML</Button>
               {this.state.HtmlReqestBusy ? <img src={LoadingIcon} width="15px" style={{margin: "0 15px"}} /> : '' }
-              <Button size="sm">JPEG</Button>
+              <Button size="sm" disabled>JPEG</Button>
             </div>
           </Col>
         </Row>
