@@ -6,6 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, Store } from 'redux';
 import rootReducer, { PreviewReducer } from './store/reducers';
+import { unregister } from './registerServiceWorker';
+
+unregister();
 
 const store:Store = createStore(combineReducers({rootReducer, PreviewReducer}));
 
