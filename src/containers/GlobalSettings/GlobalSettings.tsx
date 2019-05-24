@@ -9,10 +9,12 @@ import FontSettings, { IFonts } from '../../components/Settings/Fonts/Fonts';
 import MarginSettings, { IMargins } from '../../components/Settings/Margins/Margins';
 import ColorPicker from '../../components/UI/ColorPicker/ColorPicker';
 import ToggleButton from '../../components/UI/ToggleButton/ToggleButton';
+import * as LoadingIcon from  '../../assets/icons/loading-spin.svg';
 import { IPreviewState } from '../Preview/Preview';
 
 interface IGlobalSettingsState{
-  toggle: boolean
+  toggle: boolean,
+  HtmlReqestBusy: boolean
 }
 
 interface IGlobalSettingsProps{
@@ -25,7 +27,8 @@ interface IGlobalSettingsProps{
 class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettingsState>{
 
   public state: IGlobalSettingsState = {
-    toggle: false
+    toggle: false,
+    HtmlReqestBusy: false
   }
 
   public toggle = () => {
@@ -49,13 +52,24 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
   }
 
   public handleHtmlExport = () => {
+    this.setState({...this.state, HtmlReqestBusy: true})
+
     axios('http://localhost:4000/save', {
      method: 'post',
      headers:{
       "Content-Type": "application/json"
      },
+     withCredentials: true,
      data: this.props.previewState
-   }) 
+   }).then((res)=>{
+     if(res.data.success){
+       window.open('http://localhost:4000/download', '_blank');
+      }else{
+        alert(res.data.error)
+      }
+    }).finally(()=>{
+      this.setState({...this.state, HtmlReqestBusy: false})
+   })
   }
 
   public render(){
@@ -82,6 +96,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
             <FormLabel>Export</FormLabel>
             <div>
               <Button size="sm" className="mr-2" onClick={this.handleHtmlExport}>HTML</Button>
+              {this.state.HtmlReqestBusy ? <img src={LoadingIcon} width="15px" style={{margin: "0 15px"}} /> : '' }
               <Button size="sm">JPEG</Button>
             </div>
           </Col>
