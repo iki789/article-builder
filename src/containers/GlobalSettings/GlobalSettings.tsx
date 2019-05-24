@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Row, Col, FormLabel, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import axios  from 'axios'
 import { ColorResult } from 'react-color'
 import { UPDATE_FONTS, UPDATE_MARGINS, UPDATE_THEME } from '../Preview/store/actions';
 import './GlobalSettings.scss';
@@ -8,14 +9,14 @@ import FontSettings, { IFonts } from '../../components/Settings/Fonts/Fonts';
 import MarginSettings, { IMargins } from '../../components/Settings/Margins/Margins';
 import ColorPicker from '../../components/UI/ColorPicker/ColorPicker';
 import ToggleButton from '../../components/UI/ToggleButton/ToggleButton';
-import { ISettings } from '../Preview/Preview';
+import { IPreviewState } from '../Preview/Preview';
 
 interface IGlobalSettingsState{
   toggle: boolean
 }
 
 interface IGlobalSettingsProps{
-  settings: ISettings,
+  previewState: IPreviewState,
   onThemeColorChange: (color: string) => void,
   onFontsChange: (fonts: IFonts) => void,
   onMarginsChange: (margins: IMargins) => void
@@ -47,30 +48,40 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
     return margins;
   }
 
+  public handleHtmlExport = () => {
+    axios('http://localhost:4000/save', {
+     method: 'post',
+     headers:{
+      "Content-Type": "application/json"
+     },
+     data: this.props.previewState
+   }) 
+  }
+
   public render(){
     const settingComponents = (
     <div className="mt-5">
       <Row>
           <Col className="mb-4" >
-            <FontSettings fonts={this.props.settings.fonts} onChange={this.handleFontsChange} />
+            <FontSettings fonts={this.props.previewState.settings.fonts} onChange={this.handleFontsChange} />
           </Col>  
         </Row>
         <Row>
           <Col className="mb-4" >
-            <MarginSettings margins={this.props.settings.margins} onChange={this.handleMarginsChange} />
+            <MarginSettings margins={this.props.previewState.settings.margins} onChange={this.handleMarginsChange} />
           </Col>
         </Row>
         <Row>
           <Col className="mb-4" >
             <FormLabel>Theme</FormLabel>
-            <ColorPicker color={this.props.settings.theme} showColorPicker={false} onChange={this.handleColorChange} />
+            <ColorPicker color={this.props.previewState.settings.theme} showColorPicker={false} onChange={this.handleColorChange} />
           </Col>
         </Row>
         <Row>
           <Col className="mb-4" >
             <FormLabel>Export</FormLabel>
             <div>
-              <Button size="sm" className="mr-2">HTML</Button>
+              <Button size="sm" className="mr-2" onClick={this.handleHtmlExport}>HTML</Button>
               <Button size="sm">JPEG</Button>
             </div>
           </Col>
@@ -90,7 +101,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
 
 const mapStateToProps = (state: any) => {
   return {
-    settings: state.PreviewReducer.settings
+    previewState: state.PreviewReducer
   }
 }
 
