@@ -3,9 +3,19 @@ import './TextEditor.scss';
 import ReactQuill from 'react-quill';
 
 class TextEditor extends React.Component<ITextEditorProps>{
+  
+  public QuillRef: React.RefObject<ReactQuill>;
+
   constructor(props: ITextEditorProps) {
     super(props)
+    this.QuillRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  public componentDidMount(){
+    if(this.QuillRef.current){
+      this.QuillRef.current.focus();
+    }
   }
   
   public handleChange(value:any) {
@@ -33,6 +43,7 @@ class TextEditor extends React.Component<ITextEditorProps>{
     return (
       <div>
         <ReactQuill
+          ref={this.QuillRef}
           formats={formats}
           modules={modules} 
           value={this.props.value}
