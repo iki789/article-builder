@@ -59,25 +59,25 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
             <h3>Image</h3>
             <form>
               <Form.Group controlId="ImageSrc">
-                <Form.Label>Image Source</Form.Label>
+                <Form.Label>Source</Form.Label>
                 <Form.Control 
                   autoFocus={true}
-                  type="text" 
+                  type="url" 
                   placeholder="https://imgur.com/img.jpg" 
                   value={this.state.src} onChange={this.handleSrcChange} />
               </Form.Group>
               <Form.Group controlId="ImageCaption">
-                <Form.Label>Image Caption</Form.Label>
+                <Form.Label>Caption</Form.Label>
                 <Form.Control 
                   type="text" 
                   placeholder="A beautiful kitten" 
                   value={this.state.caption} onChange={this.handleCaptionChange} />
               </Form.Group>
               <Form.Group controlId="ImageURL">
-                <Form.Label>Image URL</Form.Label>
+                <Form.Label>Location</Form.Label>
                 <Form.Control 
-                  type="text" 
-                  placeholder={this.props.url} 
+                  type="url" 
+                  placeholder="https://nerdist.com/article/bulbasaur-best-starter-pokemon/" 
                   value={this.state.url} onChange={this.handleUrlChange} />
               </Form.Group>
             </form>
