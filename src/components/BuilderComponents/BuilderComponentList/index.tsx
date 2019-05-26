@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './BuilderComponentList.scss';
-
+import { HIDE_MODAL } from '../../../store/actions/app';
 import { ADD_ITEM_TO_ROW } from '../../../containers/Preview/store/actions';
 
 class ComponentList extends Component<IComponentListProps> {
@@ -55,7 +55,7 @@ interface IComponentListProps{
 
 const mapDispatchToProps = (dispatch:any) => {
   return {
-    onAddItem: (type: string) => dispatch(ADD_ITEM_TO_ROW(type))
+    onAddItem: (type: string) => { dispatch(ADD_ITEM_TO_ROW(type)); dispatch(HIDE_MODAL()); }
   }
 }
 
