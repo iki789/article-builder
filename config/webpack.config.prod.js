@@ -273,8 +273,7 @@ module.exports = {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
-        baseUrl: 'localhost/article-builder'
+        minifyURLs: true
       },
     }),
     // Makes some environment variables available to the JS code, for example:
