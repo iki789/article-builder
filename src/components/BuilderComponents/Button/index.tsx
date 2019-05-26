@@ -48,7 +48,8 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
           <form>
             <Form.Group controlId="ButtonLabel">
               <Form.Label>Label</Form.Label>
-              <Form.Control 
+              <Form.Control
+                autoFocus={true} 
                 type="text" 
                 value={this.state.label}
                 onChange={this.handleChange.bind(this, 'label')} 
@@ -57,7 +58,7 @@ export class ButtonForm extends React.Component<IButtonControlProps, IButtonStat
             <Form.Group controlId="ButtonLocation">
               <Form.Label>URL Location</Form.Label>
               <Form.Control 
-                type="text" 
+                type="url" 
                 value={this.state.url}
                 onChange={this.handleChange.bind(this, 'url')} 
                 placeholder="https://foobar.com" />

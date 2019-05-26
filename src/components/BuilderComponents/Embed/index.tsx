@@ -42,7 +42,8 @@ class EmbedControl extends React.Component<IEmbedControlProps, IEmbedControlStat
         <Col>
           <Form.Group>
             <Form.Label>Code</Form.Label>
-            <Form.Control 
+            <Form.Control
+              autoFocus={true}
               as="textarea" 
               placeholder="Paste your code here" 
               onChange={this.handleChange} 

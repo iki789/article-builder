@@ -40,8 +40,9 @@ class VideoForm extends React.Component<IVideoControl, IVideoControlState>{
             <form>
               <Form.Group controlId="videoSrc">
                 <Form.Label>Source</Form.Label>
-                <Form.Control 
-                  type="text" 
+                <Form.Control
+                  autoFocus={true} 
+                  type="url" 
                   value={this.state.src}
                   onChange={this.handleChange.bind(this, 'src')}
                   placeholder="https://imgur.com/video.mp4" />
@@ -57,7 +58,7 @@ class VideoForm extends React.Component<IVideoControl, IVideoControlState>{
               <Form.Group controlId="vidTitle">
                 <Form.Label>Poster</Form.Label>
                 <Form.Control 
-                  type="text" 
+                  type="url" 
                   value={this.state.poster}
                   onChange={this.handleChange.bind(this, 'poster')}
                   placeholder="https://imgur.com/img.jpg" />
