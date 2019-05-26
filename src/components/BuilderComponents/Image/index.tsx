@@ -61,6 +61,7 @@ class ImageControl extends React.Component<IImageFormProps, IImageFormState>{
               <Form.Group controlId="ImageSrc">
                 <Form.Label>Image Source</Form.Label>
                 <Form.Control 
+                  autoFocus={true}
                   type="text" 
                   placeholder="https://imgur.com/img.jpg" 
                   value={this.state.src} onChange={this.handleSrcChange} />
