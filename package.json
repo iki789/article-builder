@@ -133,5 +133,5 @@
     "webpack-manifest-plugin": "1.3.2",
     "whatwg-fetch": "2.0.3"
   },
-  "homepage": "http://rustycode.ga/article-builder"
+  "homepage": "https://rustycode.ga/article-builder"
 }
