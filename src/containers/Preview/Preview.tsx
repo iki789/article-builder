@@ -8,10 +8,20 @@ import { CLEAR_ROWS } from './store/actions';
 class Preview extends React.Component<IPreviewProps, IPreviewState> {
 
   public toolbar: React.RefObject<HTMLDivElement>;
+  public PreviewWrapper: React.RefObject<HTMLDivElement>;
 
   public constructor(props:IPreviewProps){
     super(props);
     this.toolbar = React.createRef();
+    this.PreviewWrapper = React.createRef();
+  }
+
+  public componentDidUpdate(prevProps: IPreviewProps){
+    if(prevProps.state.rows.length !== this.props.state.rows.length){
+      if(this.PreviewWrapper.current){
+        this.PreviewWrapper.current.scrollTop = this.PreviewWrapper.current.scrollHeight;
+      }
+    }
   }
 
   public clearArticle = () => {
@@ -37,7 +47,7 @@ class Preview extends React.Component<IPreviewProps, IPreviewState> {
         <div ref={this.toolbar} className="create-article-toolbar">
           <button onClick={this.clearArticle}>Create New Article</button>
         </div>
-        <div style={styles} className="Preview">
+        <div ref={this.PreviewWrapper} style={styles} className="Preview">
           {
             this.props.state.rows.map((row, i)=>{
               return (
