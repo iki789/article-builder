@@ -1,8 +1,39 @@
 @import "./variables";
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/grid';
 
 .Config-pane{
   padding: 0 !important;
   background-color: $light-blue ;
-  height: 100vh;
-  min-height: 900px;
+  min-height: 300px;
+  margin-bottom: 0.5rem;
+  >.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+  }
+  .ComponentEditorWrapper{
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #F1F9FF;
+    border-radius: 10px;
+    width: 90%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@include media-breakpoint-up(sm){
+  .Config-pane{
+    margin-bottom: 0;
+    >.wrapper{
+      height: 100vh;
+    }
+    .ComponentEditorWrapper{
+      width: 96%;
+    }    
+  }
 }

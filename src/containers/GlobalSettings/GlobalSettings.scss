@@ -1,0 +1,16 @@
+@import "../../variables";  
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/grid';
+
+.Global-Settings-Component{
+  padding: 1rem 2rem;
+  background-color: #F1F9FF;
+}
+
+@include media-breakpoint-up(sm){
+  .Global-Settings-Component{
+    padding: 1rem 4rem;
+  }
+}

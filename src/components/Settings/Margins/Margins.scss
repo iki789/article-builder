@@ -1,0 +1,23 @@
+.Marginswrapper{
+  display: flex;
+  flex-wrap: wrap;
+  .MarginLeft{
+    transform: rotate(-180deg);
+  }
+  .MarginRight{
+    transform: rotate(0deg);
+  }
+  .MarginBottom{
+    transform: rotate(90deg);
+  }
+  .MarginTop{
+    transform: rotate(-90deg);
+  }
+  input[type="number"]{
+    appearance: none;
+    max-width: 80px;
+  }
+}
+.Marginswrapper > * {
+  margin-right: 1rem;
+}
