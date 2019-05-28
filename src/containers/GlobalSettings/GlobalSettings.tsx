@@ -54,7 +54,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
   public handleHtmlExport = () => {
     this.setState({...this.state, HtmlReqestBusy: true})
 
-    axios('http://localhost:4000/save', {
+    axios('http://builder.rustycode.ga/save', {
      method: 'post',
      headers:{
       "Content-Type": "application/json"
@@ -63,7 +63,7 @@ class GlobalSettings extends React.Component<IGlobalSettingsProps, IGlobalSettin
      data: this.props.previewState
    }).then((res)=>{
      if(res.data.success){
-       window.open('http://localhost:4000/download', '_blank');
+       window.open('http://builder.rustycode.ga/download', '_blank');
       }else{
         alert(res.data.error)
       }
