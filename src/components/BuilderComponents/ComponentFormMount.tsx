@@ -66,7 +66,9 @@ const ComponentMount = (props: IComponentFormMoutProps) => {
       {toMountComponent ? (
         toMountComponent
       ) : (
-        <div style={{ textAlign: "center" }}>Select a component to edit</div>
+        <div style={{ textAlign: "center" }}>
+          Select a component to start editing
+        </div>
       )}
       {/* Remove button */}
       {toMountComponent ? (
