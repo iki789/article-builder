@@ -35,7 +35,7 @@ class GlobalSettings extends React.Component<
   IGlobalSettingsState
 > {
   public state: IGlobalSettingsState = {
-    toggle: false,
+    toggle: true,
     HtmlReqestBusy: false,
   };
 
