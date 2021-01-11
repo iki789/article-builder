@@ -181,7 +181,7 @@ const articleManGoose = (): IPreviewState => {
   cols.push(
     image(
       1,
-      "https://images2.laweekly.com/imager/man-allegedly-bench-presses-goose-for-10-m/u/original/4242367/bench_pressing_goose.jpg"
+      "https://pbs.twimg.com/media/AnzsRa_CQAITKC3?format=jpg&name=small"
     )
   );
   cols.push(
@@ -280,12 +280,6 @@ const articlePuppies = (): IPreviewState => {
     text(
       4,
       `<p><strong class="dateline">NEW HOPE, Minn. (FOX 9)</strong> - A group of puppies are one step closer to becoming service dogs after they've spent their past several weeks training in an unconventional place.</p><p>For a litter of puppies at Can Do Canines Monday, it’s graduation day from canine kindergarten. Instead of a diploma, they will be getting a new foster family for the next couple of months.</p><br><p>For the last five weeks, seven Labrador-golden retriever mix puppies have been training with inmates at the federal correctional facility in Duluth.</p><br><p>Now Yanni, Yale, Yeti, Yuki, Yasmin, O'Hara and Blarney will move in with volunteers, so they can get good at more than just teething and wagging their tails.</p><br>`
-    )
-  );
-  cols.push(
-    image(
-      5,
-      "https://media.fox9.com/media.fox9.com/photo/2019/05/06/9%20P%20-%20CAN%20DO%20CANINES_00.00.15.03_1557194394850.png_7227878_ver1.0_1280_720.jpg"
     )
   );
   cols.push(
