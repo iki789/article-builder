@@ -1,42 +1,52 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Row, Col, Form } from 'react-bootstrap';
-import { ICol } from 'src/containers/Preview/Preview';
-import { UPDATE_COL } from 'src/containers/Preview/store/actions';
-import './embed.scss';
+import React from "react";
+import { connect } from "react-redux";
+import { Row, Col, Form } from "react-bootstrap";
+import { ICol } from "src/containers/Preview/Preview";
+import { UPDATE_COL } from "src/containers/Preview/store/actions";
+import "./embed.scss";
 
-export const Embed: React.FunctionComponent<IEmbed> =  (props: IEmbed) => {
+export const Embed: React.FunctionComponent<IEmbed> = (props: IEmbed) => {
   return (
     <React.Fragment>
-      <button className="btn btn-sm" style={{padding: "0 4px", background: "#f4f4f4"}}>&lt;/&gt;</button>
+      <button
+        className="btn btn-sm"
+        style={{ padding: "0 4px", background: "#f4f4f4" }}
+      >
+        &lt;/&gt;
+      </button>
       <div className="embed-wrapper">
-        <div dangerouslySetInnerHTML={{__html: props.code}} />
+        <div dangerouslySetInnerHTML={{ __html: props.code }} />
       </div>
     </React.Fragment>
-  )
+  );
+};
+
+interface IEmbed {
+  code: string;
 }
 
-interface IEmbed{
-  code: string
-}
+class EmbedControl extends React.Component<
+  IEmbedControlProps,
+  IEmbedControlState
+> {
+  public state = {
+    value: this.props.activeCol.data.code,
+  };
 
-class EmbedControl extends React.Component<IEmbedControlProps, IEmbedControlState>{
-  
-  public state = { 
-    value: this.props.activeCol.data.code
-  }
+  public handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    this.setState(
+      {
+        value: e.target.value,
+      },
+      () => {
+        const col = this.props.activeCol;
+        col.data.code = this.state.value;
+        this.props.updateCol(col);
+      }
+    );
+  };
 
-  public handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
-    this.setState({
-      value: e.target.value
-    }, () => {
-      const col = this.props.activeCol;
-      col.data.code = this.state.value;
-      this.props.updateCol(col);
-    })
-  }
-
-  public render(){
+  public render() {
     return (
       <Row>
         <Col>
@@ -44,39 +54,43 @@ class EmbedControl extends React.Component<IEmbedControlProps, IEmbedControlStat
             <Form.Label>Code</Form.Label>
             <Form.Control
               autoFocus={true}
-              as="textarea" 
-              placeholder="Paste your code here" 
-              onChange={this.handleChange} 
-              value={this.state.value} />
+              as="textarea"
+              placeholder="Paste your code here"
+              onChange={this.handleChange}
+              value={this.state.value}
+            />
           </Form.Group>
         </Col>
       </Row>
-    )
+    );
   }
 }
 
-interface IEmbedControlProps{
-  code: string,
-  activeCol: ICol,
-  updateCol: (col: ICol) => void
+interface IEmbedControlProps {
+  code: string;
+  activeCol: ICol;
+  updateCol: (col: ICol) => void;
 }
 
-interface IEmbedControlState{
-  value: string
+interface IEmbedControlState {
+  value: string;
 }
 
-const mapStateToProps = (state:any) => {
+const mapStateToProps = (state: any) => {
   return {
-    activeCol: state.rootReducer.activeCol
-  }
-}
+    activeCol: state.rootReducer.activeCol,
+  };
+};
 
-const mapDispatchToProps = (dispatch:any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateCol: (col:ICol) => dispatch(UPDATE_COL({...col}))
-  }
-}
+    updateCol: (col: ICol) => dispatch(UPDATE_COL({ ...col })),
+  };
+};
 
-const EmbedControlConnected = connect(mapStateToProps, mapDispatchToProps)(EmbedControl);
+const EmbedControlConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmbedControl);
 
 export { EmbedControlConnected as EmbedControl };

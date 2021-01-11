@@ -1,10 +1,10 @@
 @import "../../../variables";
 
-.ColorPickerComponent{
+.ColorPickerComponent {
   display: inline-block;
 }
 
-.ColorPickerRound{
+.ColorPickerRound {
   position: relative;
   border-radius: 50%;
   width: 30px;
@@ -12,7 +12,7 @@
   border: 2px solid $light-blue;
   background-color: $primary-color;
   cursor: pointer;
-  &>*{
+  & > * {
     position: absolute !important;
     top: 30px; /* Height of ColorPicker */
   }

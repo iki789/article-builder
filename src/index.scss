@@ -1,28 +1,46 @@
-@import './variables'; 
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap/scss/buttons';
+@import "./variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/buttons";
 
-body{
+body {
   scroll-behavior: smooth;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   color: $primary;
 }
 
-label{
+label {
   color: $primary-color;
 }
 
 .btn-primary {
-  @include button-variant($light-blue, $light-blue, darken($light-blue, 10%), lighten($light-blue,5%), lighten($light-blue, 10%), darken($light-blue,30%));
+  @include button-variant(
+    $light-blue,
+    $light-blue,
+    darken($light-blue, 10%),
+    lighten($light-blue, 5%),
+    lighten($light-blue, 10%),
+    darken($light-blue, 30%)
+  );
   color: #fff;
-  &:hover{
+  &:hover {
     color: #fff;
   }
 }
-// background, border-color, hover:background-color, hover:background-color, active:background-color, active:background-color  
-select{
+// background, border-color, hover:background-color, hover:background-color, active:background-color, active:background-color
+select {
   appearance: none;
   background-image: url("./assets/icons/dropdown.svg");
   background-repeat: no-repeat;
@@ -30,15 +48,15 @@ select{
   background-position: right $input-padding-x center;
 }
 
-.Bg-blue{
+.Bg-blue {
   background-color: $blue;
 }
 
-.Bg-blue-light{
+.Bg-blue-light {
   background-color: $light-blue;
 }
 
-.AddComponentButton{
+.AddComponentButton {
   border: 6px solid $light-blue;
   padding: 0.65rem 0;
   text-align: center;
@@ -46,6 +64,6 @@ select{
   cursor: pointer;
 }
 
-textarea.form-control{
+textarea.form-control {
   border-radius: 0.25em;
 }

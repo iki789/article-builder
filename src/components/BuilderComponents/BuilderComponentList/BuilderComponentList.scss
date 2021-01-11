@@ -1,14 +1,14 @@
 @import "../../../variables";
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/grid';
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/grid";
 
-.ComponentList{
+.ComponentList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  &>*{
+  & > * {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -21,24 +21,24 @@
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease-in;
-    &:hover{
+    &:hover {
       background-color: darken($light-blue, 2%);
     }
-    img{
+    img {
       display: block;
       margin: auto;
     }
-    label{
+    label {
       text-transform: capitalize;
       cursor: pointer;
     }
   }
 }
 
-@include media-breakpoint-up(sm){
-  .ComponentList{
+@include media-breakpoint-up(sm) {
+  .ComponentList {
     margin: 3rem -2rem;
-    &>*{
+    & > * {
       margin: 1rem;
     }
   }

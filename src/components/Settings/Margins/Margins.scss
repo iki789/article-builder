@@ -1,19 +1,19 @@
-.Marginswrapper{
+.Marginswrapper {
   display: flex;
   flex-wrap: wrap;
-  .MarginLeft{
+  .MarginLeft {
     transform: rotate(-180deg);
   }
-  .MarginRight{
+  .MarginRight {
     transform: rotate(0deg);
   }
-  .MarginBottom{
+  .MarginBottom {
     transform: rotate(90deg);
   }
-  .MarginTop{
+  .MarginTop {
     transform: rotate(-90deg);
   }
-  input[type="number"]{
+  input[type="number"] {
     appearance: none;
     max-width: 80px;
   }

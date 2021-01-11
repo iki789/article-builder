@@ -1,55 +1,72 @@
-@import '../../assets/fonts//fonts.scss';
-@import '../../variables';
+@import "../../assets/fonts//fonts.scss";
+@import "../../variables";
 
-.Preview{
+.Preview {
   overflow: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
   max-height: 100vh;
   scroll-behavior: smooth;
-  h1, h2, h3, h4, h5, h6, blockquote, button, .btn{font-size: 1em;}
-  h1{ font-size: 3.5em; }
-  h2{ font-size: 2.5em; }
-  h3{ font-size: 2em; }
-  h4{ font-size: 1.75em; }
-  p{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  button,
+  .btn {
+    font-size: 1em;
+  }
+  h1 {
+    font-size: 3.5em;
+  }
+  h2 {
+    font-size: 2.5em;
+  }
+  h3 {
+    font-size: 2em;
+  }
+  h4 {
+    font-size: 1.75em;
+  }
+  p {
     margin-bottom: 0;
     color: inherit;
     font-size: 1.2em;
   }
-  .row{
+  .row {
     margin-bottom: 2rem;
   }
-  img{
+  img {
     width: 100%;
   }
-  .btn{
+  .btn {
     border-radius: 4px;
     font-weight: 600;
     font-size: 1em;
-    &.btn-block{
+    &.btn-block {
       padding: 1rem;
       font-size: 1.2rem;
     }
-    &.btn-outline-primary{
+    &.btn-outline-primary {
       border-width: 2px;
     }
   }
-  blockquote{
+  blockquote {
     background-color: #f1f1f1;
     padding: 1rem;
     border-left: 4px solid #333;
   }
-
-}  
-.create-article-toolbar{
+}
+.create-article-toolbar {
   padding: 1rem;
   background-color: $light-blue;
   text-align: center;
   margin-bottom: 1rem;
   margin-left: -15px;
   margin-right: -15px;
-  button{
+  button {
     background-color: #fff;
     color: $primary-color;
     border-radius: 5px;

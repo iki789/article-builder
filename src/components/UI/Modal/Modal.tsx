@@ -1,36 +1,38 @@
-import React from 'react'
+import React from "react";
 
-import './Modal.scss';
-import { Modal } from 'react-bootstrap';
+import "./Modal.scss";
+import { Modal } from "react-bootstrap";
 
-interface IModalProps{
+interface IModalProps {
   children?: any;
   show?: boolean;
   title?: string;
-  size?: "sm"|"lg"|"xl";
+  size?: "sm" | "lg" | "xl";
   onHide?: any;
 }
 
-interface IModalState{
-  show?: boolean
+interface IModalState {
+  show?: boolean;
 }
 
-export default class WrapperModal extends React.Component<IModalProps, IModalState> {
+export default class WrapperModal extends React.Component<
+  IModalProps,
+  IModalState
+> {
   public state: IModalState = {
-    show: true
-  }
+    show: true,
+  };
 
   public render() {
     return (
       <div className="ModalComponent">
         <Modal show={this.state.show} {...this.props}>
           <Modal.Body>
-            <Modal.Title as="h2">{this.props.title}</Modal.Title>  
+            <Modal.Title as="h2">{this.props.title}</Modal.Title>
             {this.props.children}
           </Modal.Body>
         </Modal>
       </div>
-    )
+    );
   }
 }
-

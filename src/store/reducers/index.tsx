@@ -1,54 +1,56 @@
-import * as ActionTypes from '../actions/actionTypes';
-import { ICol } from '../../containers/Preview/Preview';
+import * as ActionTypes from "../actions/actionTypes";
+import { ICol } from "../../containers/Preview/Preview";
 
-const initialState:IAppState = {
-  showModal: false
-}
+const initialState: IAppState = {
+  showModal: false,
+};
 
-const Reducer = (state: IAppState = initialState, action:{type: string, payload: any}) => {
-  if(action.type === ActionTypes.HIDE_MODAL){
+const Reducer = (
+  state: IAppState = initialState,
+  action: { type: string; payload: any }
+) => {
+  if (action.type === ActionTypes.HIDE_MODAL) {
     state = {
       ...state,
-      showModal: false
-    }
+      showModal: false,
+    };
   }
 
-  if(action.type === ActionTypes.SHOW_MODAL){
+  if (action.type === ActionTypes.SHOW_MODAL) {
     state = {
       ...state,
-      showModal: true
-    }
+      showModal: true,
+    };
   }
 
-  if(action.type === ActionTypes.ACTIVATE_COL){
+  if (action.type === ActionTypes.ACTIVATE_COL) {
     state = {
       ...state,
-      activeCol: action.payload
-    }
+      activeCol: action.payload,
+    };
   }
 
-  if(action.type === ActionTypes.UPDATE_COL){
+  if (action.type === ActionTypes.UPDATE_COL) {
     state = {
       ...state,
-      activeCol: action.payload
-    }
+      activeCol: action.payload,
+    };
   }
 
-  if(action.type === ActionTypes.UNSET_COL){
+  if (action.type === ActionTypes.UNSET_COL) {
     state = {
       ...state,
-      activeCol: undefined
-    }
+      activeCol: undefined,
+    };
   }
 
   return state;
-}
+};
 
-
-export interface IAppState{
-  showModal: boolean,
-  activeCol?: ICol
+export interface IAppState {
+  showModal: boolean;
+  activeCol?: ICol;
 }
 
 export default Reducer;
-export { PreviewReducer } from '../../containers/Preview/store/reducer';
+export { PreviewReducer } from "../../containers/Preview/store/reducer";
